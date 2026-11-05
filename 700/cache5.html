@@ -178,7 +178,7 @@ body{background-color:#080f20!important;background-image:radial-gradient(ellipse
             appCache.onnoupdate = function () { openHost('Offline Cache Ready'); };
             appCache.onerror = function () {
                 setCached(false);
-                progressLabel.innerHTML = 'Offline cache failed. Clear browser data and reload while online.';
+                progressLabel.innerHTML = 'Çevrimdışı önbellek kurulamadı. Clear browser data and reload while online.';
             };
             appCache.onobsolete = appCache.onerror;
         }());

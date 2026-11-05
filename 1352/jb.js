@@ -58,10 +58,10 @@ function finishUI(ok) {
   const m = document.getElementById("msg");
   if (m)
     m.textContent = ok
-      ? "DONE"
+      ? "İşlem tamamlandı"
       : armedEver
-        ? "Restart your console"
-        : "Refresh the page and run again";
+        ? "Konsolu yeniden başlatın"
+        : "Sayfayı yenileyip yeniden deneyin";
   document.body.className = ok ? "done" : "fail";
 }
 function mark(tag, detail) {
@@ -3824,7 +3824,7 @@ let allDone = false,
     }
   } catch (e) {
     mark("THREW", e && e.message ? e.message : String(e));
-    state("threw", "bad");
+    state("Beklenmeyen hata oluştu", "bad");
   } finally {
     try {
       if (jbRestoreHook) jbRestoreHook("finally");

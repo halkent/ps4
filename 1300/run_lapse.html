@@ -92,7 +92,7 @@ body{background-color:#080f20!important;background-image:radial-gradient(ellipse
             <span class="bar-chain">lapse chain</span>
         </header>
 
-        <div id="state">loading lapse chain...</div>
+        <div id="state">İşlem hazırlanıyor...</div>
         <div id="out"></div>
     </div>
 <script type="module">import "./chain_lapse.js";</script>
@@ -141,7 +141,7 @@ body{background-color:#080f20!important;background-image:radial-gradient(ellipse
                 clearInterval(monitor);
                 return;
             }
-            if (!st || st.textContent.indexOf("FAILED") === -1) return;
+            if (!st || st.textContent.indexOf("İşlem başarısız") === -1) return;
             var out = document.getElementById("out");
             var txt = out ? out.textContent : "";
             if (txt.indexOf("attempt-ceiling") === -1) return;
@@ -149,7 +149,7 @@ body{background-color:#080f20!important;background-image:radial-gradient(ellipse
             clearInterval(monitor);
             var rec = spendBudget();
             if (!rec || rec.n > MAX) return;
-            st.textContent = "heap layout missed -- reloading for a fresh heap (" + rec.n + "/2)...";
+            st.textContent = "Bellek düzeni uygun değil — yeniden hazırlanıyor (" + rec.n + "/2)...";
             st.className = "warn";
             setTimeout(function () { location.reload(); }, 2000);
         } catch (e) { /* never break the exploit page */ }

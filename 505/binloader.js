@@ -794,8 +794,8 @@ var exploit = function() {
       }
    }
    p.fcall(createThread, shellbuf, 0, p.stringify(name));
-   alert("Waiting for Payload... Send it using the PS4 IP and port 9020");
-   msgs2.innerHTML="<h1 style='font-size:30px;'>Bin Loader Launched ✔</h1>";
+   alert("Yük dosyası bekleniyor... PS4 IP adresine, 9020 bağlantı noktasından gönderin.");
+   msgs2.innerHTML="<h1 style='font-size:30px;'>BinLoader başlatıldı ✔</h1>";
 };
 window.onload = function() {
    setTimeout(exploit, 1000);

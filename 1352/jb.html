@@ -148,12 +148,12 @@ body{background-color:#080f20!important;background-image:radial-gradient(ellipse
                 handled = true;
                 return;
             }
-            if (!st || st.textContent !== "threw") return;
+            if (!st || st.textContent !== "Beklenmeyen hata oluştu") return;
             if (txt.indexOf("attempt-ceiling") === -1) return;
             handled = true;
             var rec = spendBudget();
             if (!rec || rec.n > MAX) return;
-            st.textContent = "heap layout missed -- reloading for a fresh heap (" + rec.n + "/2)...";
+            st.textContent = "Bellek düzeni uygun değil — yeniden hazırlanıyor (" + rec.n + "/2)...";
             st.className = "warn";
             setTimeout(function () { location.reload(); }, 2000);
         } catch (e) { /* never break the exploit page */ }

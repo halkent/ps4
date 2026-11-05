@@ -28,7 +28,7 @@ function showNotice(text) {
 function showRetry() {
   if (retryShown) return;
   retryShown = true;
-  showNotice("exploit failed - please retry (reopen browser)");
+  showNotice("İşlem başarısız — tarayıcıyı kapatıp açarak yeniden deneyin");
 }
 
 const WATCHDOG_MS = 45000;
@@ -227,10 +227,10 @@ function finishUI(ok, ran) {
   const m = document.getElementById("msg");
   if (m)
     m.textContent = ok
-      ? "DONE"
+      ? "İşlem tamamlandı"
       : ran
-        ? "Restart your console"
-        : "Refresh the page and run again";
+        ? "Konsolu yeniden başlatın"
+        : "Sayfayı yenileyip yeniden deneyin";
   document.body.className = ok ? "done" : "fail";
 }
 function mark(tag, detail) {

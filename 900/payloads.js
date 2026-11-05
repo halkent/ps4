@@ -91,7 +91,7 @@ function Loadpayloadlocal(PLfile) {
             return;
         }
 
-        setPayloadStatus('Loading payload file...');
+        setPayloadStatus('payload file yükleniyor... Lütfen bekleyin');
         getPayload(PLfile, function (payloadReq) {
             if (!xhrSucceeded(payloadReq) || !payloadReq.response) {
                 fallbackToExploitLoader(PLfile);

