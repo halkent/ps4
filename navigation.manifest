@@ -1,0 +1,15 @@
+CACHE MANIFEST
+# Halkent integration 2026-11-05
+# version-label-audit-20261021-v3
+# navigation-v1-20261021: menu only; host caches install separately
+
+CACHE:
+./ #21ddb437b3db7ddd7827e6a1ce8c3af393960b5fd9cf14bbae8b8f091d1c244a
+index.html #21ddb437b3db7ddd7827e6a1ce8c3af393960b5fd9cf14bbae8b8f091d1c244a
+halkent.svg #03b1251eb737e4fda061b7c4f8f1210149f9cd7f7a9d1f0b80ba85f4101e04e6
+700/version-selector.html #27ba1a989d1965777f818566c62f6ac926f55a6e1a01d372bdd64ecad436c29b
+900/version-selector.html #79c4183d75b5f67b8c755f6a9d50ba90080f8579dd5ebfcb2e83ea2f1a737140
+css/version-selector.html #1e17e8e37900cddc4a47f0de88901e9e42478134f3e7d17e7ee98b69ff7aa00e
+
+NETWORK:
+*
