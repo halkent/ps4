@@ -14,38 +14,39 @@
       body {
         min-height: 100vh;
         overflow: hidden;
+        background: #080f20;
+        background-image:
+          radial-gradient(ellipse at 12% 42%, rgba(15, 124, 159, 0.32), transparent 55%),
+          radial-gradient(ellipse at 88% 64%, rgba(95, 55, 157, 0.30), transparent 55%),
+          linear-gradient(135deg, #061420, #0d152d 55%, #140f25);
       }
       body:before,
       body:after {
         content: "";
         position: fixed;
+        pointer-events: none;
         border-radius: 50%;
-        opacity: 0.32;
+        opacity: 0.45;
       }
       body:before {
-        width: 430px;
-        height: 430px;
-        left: -190px;
-        top: -230px;
-        background: #006eff;
-        box-shadow: 0 0 100px #006eff;
+        width: 145vw;
+        height: 85vh;
+        left: -30vw;
+        top: 40vh;
+        border: 1px solid rgba(88, 211, 231, 0.20);
+        box-shadow: 0 -28px 85px rgba(27, 160, 190, 0.08);
+        transform: rotate(-18deg);
       }
       body:after {
-        width: 350px;
-        height: 350px;
-        right: -170px;
-        bottom: -210px;
-        background: #7b20ff;
-        box-shadow: 0 0 100px #7b20ff;
+        width: 135vw;
+        height: 88vh;
+        right: -35vw;
+        bottom: 42vh;
+        border: 1px solid rgba(150, 127, 224, 0.16);
+        transform: rotate(-18deg);
       }
       .grid {
-        position: fixed;
-        inset: 0;
-        opacity: 0.12;
-        background-image:
-          linear-gradient(rgba(80, 150, 255, 0.35) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(80, 150, 255, 0.35) 1px, transparent 1px);
-        background-size: 42px 42px;
+        display: none;
       }
       .shell {
         position: relative;
