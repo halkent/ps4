@@ -4,12 +4,13 @@ CACHE MANIFEST
 # navigation-v1-20261021: menu only; host caches install separately
 
 CACHE:
-./ #bfd6df7198aa6e1e7aa337513fe2d5a692f8981b3088b3a89711c75bc2e1822e
-index.html #bfd6df7198aa6e1e7aa337513fe2d5a692f8981b3088b3a89711c75bc2e1822e
+firmware-detect.js
+./ #231b9b17ff1aea3759caa9a223eebc2b3368f1b9870d9fce07ed29ed44a2ab20
+index.html #231b9b17ff1aea3759caa9a223eebc2b3368f1b9870d9fce07ed29ed44a2ab20
 halkent.svg #03b1251eb737e4fda061b7c4f8f1210149f9cd7f7a9d1f0b80ba85f4101e04e6
-700/version-selector.html #63470b1ed7b04a38476b2bad5921bee3da6c7e225c8f074e9a9e86e3dcd1357d
-900/version-selector.html #17e07968942e78012ea40b56959f3dc705f40434142f2e5d552bb496483d770c
-css/version-selector.html #72578d038df5b9a18bc13dd4b0fcab3fcd8ab03a7ce45c9cb7b862188055604f
+700/version-selector.html #b0fa0150dd90d99279e47c0aa2581421a4b988915e21e77b95338fbb272e3c23
+900/version-selector.html #e3849f6b7274b4e2052c22b5b158f686fb731ced9bf13a02117b704c90ea9d2f
+css/version-selector.html #7109ba689678ea8b0476e3b1cd75dfbab22e1bf2dd829940cdbbbd82c91c203e
 
 NETWORK:
 *
