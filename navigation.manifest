@@ -4,8 +4,8 @@ CACHE MANIFEST
 # navigation-v1-20261021: menu only; host caches install separately
 
 CACHE:
-./ #7453e0ebe52d54183f8cdbf5a395da057618d76d4df75e85c5e86724102ea048
-index.html #7453e0ebe52d54183f8cdbf5a395da057618d76d4df75e85c5e86724102ea048
+./ #c1ea8a352ef43724f8409009582aefaadac0ebe2ba6fa37e6376b3eecdf1db1b
+index.html #c1ea8a352ef43724f8409009582aefaadac0ebe2ba6fa37e6376b3eecdf1db1b
 halkent.svg #03b1251eb737e4fda061b7c4f8f1210149f9cd7f7a9d1f0b80ba85f4101e04e6
 700/version-selector.html #27ba1a989d1965777f818566c62f6ac926f55a6e1a01d372bdd64ecad436c29b
 900/version-selector.html #79c4183d75b5f67b8c755f6a9d50ba90080f8579dd5ebfcb2e83ea2f1a737140
