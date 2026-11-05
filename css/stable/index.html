@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" manifest="cache.manifest">
+<html lang="tr" manifest="cache.manifest">
 
 <head>
     <link rel="icon" type="image/png" href="../../halkent.svg">
@@ -150,20 +150,10 @@
         .auto-jb-label:focus { box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent); outline: 0; }
         #autoJbInput { height: 18px; width: 18px; }
 
-        /* NodePlay */
-        .nodeplay {
-            align-items: center;
-            background: var(--panel);
-            border: 1px solid var(--line-bright);
-            display: flex;
-            justify-content: space-between;
-            margin-top: 14px;
-            min-height: 68px;
-            padding: 10px 18px;
-            text-decoration: none;
-        }
-        .nodeplay:hover, .nodeplay:focus { background: var(--panel-2); border-color: var(--accent); outline: 0; }
-        .nodeplay:focus { box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent); }
+        
+        
+        
+        
         .np-label { color: var(--dim); display: block; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
         .np-name { color: var(--text); display: block; font-size: 24px; margin-top: 2px; }
         .np-name b { color: var(--accent); font-weight: 400; }
@@ -199,25 +189,25 @@
 <body>
     <div class="app">
         <header class="bar">
-            <span><b>HALKENT</b> // ps4 hosts</span>
-            <span class="bar-fw">fw 6.00-11.02 ready</span>
+            <span><b>HALKENT</b> // PS4 MERKEZİ</span>
+            <span class="bar-fw">Sürüm 6.00-11.02 hazır</span>
         </header>
 
         <main class="layout">
             <p class="kicker">$ ./launch --cssfontface</p>
-            <h1>CSSFontFace <em>6.00-11.02</em> host</h1>
+            <h1>CSSFontFace <em>6.00-11.02</em> merkezi</h1>
             <p class="sub">Halkent PS4 merkezi.</p>
             <ul class="boot">
-                <li>[ <b>ok</b> ] cssfontface chain ready</li>
+                <li>[ <b>ok</b> ] CSSFontFace hazır</li>
                 <li>[ <b>ok</b> ] goldhen v2.4b18.10 staged</li>
-                <li>[ <b>ok</b> ] offline cache ready</li>
+                <li>[ <b>ok</b> ] Çevrimdışı önbellek hazır</li>
             </ul>
             <p id="UA">Running on:</p>
             <p id="cache">Checking offline cache...</p>
 
             <div class="status">
                 <div class="status-label">Exploit output</div>
-                <pre id="console">Ready. Awaiting execution...</pre>
+                <pre id="console">Hazır. İşlemin başlaması bekleniyor...</pre>
             </div>
 
             <section class="controls">
@@ -231,9 +221,9 @@
                         <label class="chain-option" for="lapse-exploit">Lapse</label>
                     </div>
                     <button id="jeilbrek" type="button">Jailbreak</button>
-                    <button id="reloadBtn" type="button">Reload</button>
+                    <button id="reloadBtn" type="button">Yenile</button>
                     <div class="auto-jb">
-                        <label class="auto-jb-label" for="autoJbInput" id="autoJbLabel">Auto Jailbreak</label>
+                        <label class="auto-jb-label" for="autoJbInput" id="autoJbLabel">Otomatik başlat</label>
                         <input id="autoJbInput" type="checkbox">
                     </div>
                 </form>
@@ -242,7 +232,7 @@
             
 
             <footer class="foot">
-                <div>Author: <a href="https://t.me/sudoBlackArch">BlackArch</a> // Telegram: <a href="https://t.me/PlayStation_Pulse">Topluluk</a></div>
+                <div>Kaynak: <a href="https://t.me/sudoBlackArch">BlackArch</a> // <a href="https://t.me/PlayStation_Pulse">Topluluk</a></div>
             </footer>
         </main>
     </div>
@@ -262,7 +252,7 @@
         }
 
         if (!cache || !document.documentElement.hasAttribute('manifest')) {
-            show('Application cache unavailable');
+            show('Application Önbellek kullanılamıyor');
             return;
         }
 
@@ -270,7 +260,7 @@
             show('Checking offline cache...');
         }, false);
         cache.addEventListener('downloading', function () {
-            show('Installing offline cache...');
+            show('Çevrimdışı önbellek kuruluyor...');
         }, false);
         cache.addEventListener('progress', function (event) {
             if (event && event.total > 0) {
@@ -278,42 +268,39 @@
             }
         }, false);
         cache.addEventListener('cached', function () {
-            show('Cached for offline use', true);
+            show('Çevrimdışı kullanım için kaydedildi', true);
         }, false);
         cache.addEventListener('noupdate', function () {
-            show('Cached — offline ready', true);
+            show('Önbellek hazır — çevrimdışı kullanılabilir', true);
         }, false);
         cache.addEventListener('updateready', function () {
-            show('Cache update ready', true);
+            show('Önbellek güncellemesi hazır', true);
         }, false);
         cache.addEventListener('error', function () {
             if (cache.status === cache.IDLE ||
                 cache.status === cache.UPDATEREADY) {
-                show('Cached — offline ready', true);
+                show('Önbellek hazır — çevrimdışı kullanılabilir', true);
             } else {
-                show('Cache failed — check the connection and retry manually');
+                show('Önbellek hatası — bağlantıyı kontrol edip yeniden deneyin');
             }
         }, false);
         cache.addEventListener('obsolete', function () {
-            show('Cache obsolete — clear browser data and reload');
+            show('Önbellek güncel değil — tarayıcı verilerini temizleyip sayfayı yenileyin');
         }, false);
 
         if (!navigator.onLine) {
             show('Offline — using cached resources', true);
         } else if (cache.status === cache.UPDATEREADY) {
-            show('Cache updated — reloading...', true);
+            show('Önbellek güncellendi — sayfa yenileniyor...', true);
         } else if (cache.status === cache.IDLE) {
-            show('Cached — offline ready', true);
+            show('Önbellek hazır — çevrimdışı kullanılabilir', true);
         }
     }());
     </script>
 
 
-<!-- PSPulse support link: intentionally lightweight for the PS4 browser. -->
-<style id="pspulse-support-style">
-.pspulse-support{position:fixed;right:18px;bottom:18px;z-index:2147483647;display:block;padding:10px 15px;border:1px solid #9b87ff;border-radius:4px;background:#17151f;color:#b7a9ff!important;font:600 13px Arial,sans-serif;letter-spacing:.2px;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,.32)}
-.pspulse-support:hover,.pspulse-support:focus{background:#9b87ff;color:#101014!important;outline:none}
-</style>
+
+
 
 </body>
 

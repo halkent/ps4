@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" manifest="../navigation.manifest">
+<html lang="tr" manifest="../navigation.manifest">
 
 <head>
     <link rel="icon" type="image/png" href="../halkent.svg">
@@ -103,20 +103,10 @@
         .card-action { color: var(--dim); font-size: 13px; margin-left: auto; padding-left: 12px; white-space: nowrap; }
         .version-card:hover .card-action, .version-card:focus .card-action { color: var(--accent); }
 
-        /* NodePlay */
-        .nodeplay {
-            align-items: center;
-            background: var(--panel);
-            border: 1px solid var(--line-bright);
-            display: flex;
-            justify-content: space-between;
-            margin-top: 14px;
-            min-height: 68px;
-            padding: 10px 18px;
-            text-decoration: none;
-        }
-        .nodeplay:hover, .nodeplay:focus { background: var(--panel-2); border-color: var(--accent); outline: 0; }
-        .nodeplay:focus { box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent); }
+        
+        
+        
+        
         .np-label { color: var(--dim); display: block; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
         .np-name { color: var(--text); display: block; font-size: 24px; margin-top: 2px; }
         .np-name b { color: var(--accent); font-weight: 400; }
@@ -151,44 +141,44 @@
 <body>
     <div class="app">
         <header class="bar">
-            <span><b>HALKENT</b> // ps4 hosts</span>
-            <span class="bar-fw">fw 7.00-8.52 ready</span>
+            <span><b>HALKENT</b> // PS4 MERKEZİ</span>
+            <span class="bar-fw">Sürüm 7.00-8.52 hazır</span>
         </header>
 
         <main class="layout">
             <p class="kicker">$ select --goldhen</p>
             <h1>Choose <em>version</em></h1>
-            <p class="sub">Select the GoldHEN version to cache and use with the PSFree host.</p>
+            <p class="sub">Önbelleğe kaydedilecek GoldHEN sürümünü seçin.</p>
             <ul class="boot">
-                <li>[ <b>ok</b> ] psfree 1.7 chain ready</li>
+                <li>[ <b>ok</b> ] PSFree 1.7 hazır</li>
                 <li>[ <b>ok</b> ] 2 builds available</li>
             </ul>
 
             <section class="menu" aria-label="GoldHEN versions">
                 <div class="menu-top">
-                    <span class="menu-title">Available versions</span>
-                    <span class="menu-hint">&uarr; &darr; move &nbsp; X select</span>
+                    <span class="menu-title">Kullanılabilir sürümler</span>
+                    <span class="menu-hint">&uarr; &darr; move &nbsp; X seç</span>
                 </div>
                 <div class="version-grid">
                     <div class="version-card latest" onclick="selectVersion('v2.4b18.12')" tabindex="0"
                         data-version="latest">
                         <span class="card-index">01</span>
                         <span>
-                            <span class="version-badge latest">Latest</span>
+                            <span class="version-badge latest">Güncel</span>
                             <span class="version-title">GoldHEN <span class="version-number">v2.4b18.12</span></span>
-                            <span class="version-description">Latest release with improved stability, new features, and better compatibility. Recommended for most users.</span>
+                            <span class="version-description">İyileştirmeler ve yeni özellikler içeren güncel sürüm.</span>
                         </span>
-                        <span class="card-action">[ SELECT ]</span>
+                        <span class="card-action">[ SEÇ ]</span>
                     </div>
 
                     <div class="version-card" onclick="selectVersion('v2.4b18.10')" tabindex="0" data-version="stable">
                         <span class="card-index">02</span>
                         <span>
-                            <span class="version-badge">Stable</span>
+                            <span class="version-badge">Kararlı</span>
                             <span class="version-title">GoldHEN <span class="version-number">v2.4b18.10</span></span>
-                            <span class="version-description">Previous stable release with proven reliability. Choose this if the latest version causes issues or you prefer maximum stability.</span>
+                            <span class="version-description">Güncel sürümde sorun yaşarsanız önceki kararlı sürümü seçebilirsiniz.</span>
                         </span>
-                        <span class="card-action">[ SELECT ]</span>
+                        <span class="card-action">[ SEÇ ]</span>
                     </div>
                 </div>
             </section>
@@ -196,7 +186,7 @@
             
 
             <footer class="foot">
-                Author: <a href="https://t.me/sudoBlackArch">BlackArch</a> // Telegram: <a href="https://t.me/PlayStation_Pulse">Topluluk</a>
+                Kaynak: <a href="https://t.me/sudoBlackArch">BlackArch</a> // <a href="https://t.me/PlayStation_Pulse">Topluluk</a>
             </footer>
         </main>
     </div>
@@ -255,11 +245,8 @@
         }
     </script>
 
-<!-- PSPulse support link: intentionally lightweight for the PS4 browser. -->
-<style id="pspulse-support-style">
-.pspulse-support{position:fixed;right:18px;bottom:18px;z-index:2147483647;display:block;padding:10px 15px;border:1px solid #9b87ff;border-radius:4px;background:#17151f;color:#b7a9ff!important;font:600 13px Arial,sans-serif;letter-spacing:.2px;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,.32)}
-.pspulse-support:hover,.pspulse-support:focus{background:#9b87ff;color:#101014!important;outline:none}
-</style>
+
+
 
 </body>
 

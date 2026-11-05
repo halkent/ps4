@@ -326,7 +326,7 @@ let mainMf = null,
         document.body.classList.add("log");
       } catch (e) {}
 
-      state("not a PS4 browser - debug mode", "warn");
+      state("PS4 tarayıcısı değil — hata ayıklama modu", "warn");
 
       mark(
         "NONPS4-DEBUG",
@@ -392,10 +392,10 @@ let mainMf = null,
     if (params.get("afterglow") && SUPPORTED.indexOf(fwKey) < 0) {
       mark("FW-UNSUPPORTED", fwKey + " -- this build has a kernel stage for "
            + SUPPORTED.join(", ") + " only");
-      state("firmware " + fwKey + " is not supported", "fail");
+      state("Sistem sürümü " + fwKey + " desteklenmiyor", "fail");
       showNotice(
-        "This build has a kernel stage for firmware " + SUPPORTED.join(", ") +
-        " only. Detected " + fwKey + " - nothing was run.",
+        "Bu sayfanın desteklediği sistem sürümleri: " + SUPPORTED.join(", ") +
+        ". Algılanan sürüm: " + fwKey + ". İşlem başlatılmadı.",
       );
       return;
     }
@@ -410,7 +410,7 @@ let mainMf = null,
     const PRIMITIVE_ONLY = params.get("stop") === "primitive";
 
     if (PRIMITIVE_ONLY) {
-      state("testing WebKit primitive...", "warn");
+      state("WebKit hazırlığı kontrol ediliyor...", "warn");
 
       await new Promise(function (resolve) {
         setTimeout(resolve, 0);

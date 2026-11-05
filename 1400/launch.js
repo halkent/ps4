@@ -50,10 +50,10 @@ function cacheNote() {
   if (!appCache) { cacheEl.textContent = ""; return; }
   var text = "";
   try {
-    if (appCache.status === appCache.CHECKING) text = "checking for updates";
-    else if (appCache.status === appCache.DOWNLOADING) text = "loading files - hold on";
-    else if (appCache.status === appCache.UPDATEREADY) text = "a newer version is cached - reopen this page to use it";
-    else if (appCache.status === appCache.OBSOLETE) text = "the cache was dropped - the server answers directly";
+    if (appCache.status === appCache.CHECKING) text = "Güncellemeler kontrol ediliyor";
+    else if (appCache.status === appCache.DOWNLOADING) text = "Dosyalar yükleniyor — lütfen bekleyin";
+    else if (appCache.status === appCache.UPDATEREADY) text = "Yeni sürüm hazır — kullanmak için sayfayı yeniden açın";
+    else if (appCache.status === appCache.OBSOLETE) text = "Önbellek kaldırıldı — dosyalar sunucudan yükleniyor";
   } catch (e) {}
   cacheEl.textContent = text;
 }

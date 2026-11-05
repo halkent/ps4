@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" manifest="cache.manifest">
+<html lang="tr" manifest="cache.manifest">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -81,20 +81,10 @@
     .bad { color: var(--red); }
     .warn { color: var(--amber); }
 
-    /* NodePlay */
-    .nodeplay {
-        align-items: center;
-        background: var(--panel);
-        border: 1px solid var(--line-bright);
-        display: flex;
-        justify-content: space-between;
-        margin-top: 14px;
-        min-height: 68px;
-        padding: 10px 18px;
-        text-decoration: none;
-    }
-    .nodeplay:hover, .nodeplay:focus { background: var(--panel-2); border-color: var(--accent); outline: 0; }
-    .nodeplay:focus { box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent); }
+    
+    
+    
+    
     .np-label { color: var(--dim); display: block; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
     .np-name { color: var(--text); display: block; font-size: 24px; margin-top: 2px; }
     .np-name b { color: var(--accent); font-weight: 400; }
@@ -126,22 +116,22 @@
 <body>
     <div class="app">
         <header class="bar">
-            <span><b>HALKENT</b> // ps4 hosts</span>
-            <span class="bar-fw">fw 13.02-13.52 ready</span>
+            <span><b>HALKENT</b> // PS4 MERKEZİ</span>
+            <span class="bar-fw">Sürüm 13.02-13.52 hazır</span>
         </header>
 
         <main class="layout">
             <p class="kicker">$ ./launch --slopkit relapse</p>
-            <h1>SlopKit <em>13.02-13.52</em> host</h1>
+            <h1>SlopKit <em>13.02-13.52</em> merkezi</h1>
             <p class="sub">Halkent PS4 merkezi.</p>
             <ul class="boot">
-                <li>[ <b>ok</b> ] slopkit chain ready</li>
-                <li>[ <b>ok</b> ] goldhen v2.4b18.12 staged</li>
-                <li>[ <b>ok</b> ] offline cache ready</li>
+                <li>[ <b>ok</b> ] SlopKit hazır</li>
+                <li>[ <b>ok</b> ] GoldHEN v2.4b18.12 hazır</li>
+                <li>[ <b>ok</b> ] Çevrimdışı önbellek hazır</li>
             </ul>
 
             <section class="status" id="wrap">
-                <div id="state">detecting firmware...</div>
+                <div id="state">Sistem sürümü algılanıyor...</div>
                 <div id="det"></div>
                 <div id="cache"></div>
             </section>
@@ -149,7 +139,7 @@
             
 
             <footer class="foot">
-                Author: <a href="https://t.me/sudoBlackArch">BlackArch</a> // Telegram: <a href="https://t.me/PlayStation_Pulse">Topluluk</a>
+                Kaynak: <a href="https://t.me/sudoBlackArch">BlackArch</a> // <a href="https://t.me/PlayStation_Pulse">Topluluk</a>
             </footer>
         </main>
     </div>
@@ -203,15 +193,15 @@
 
     var forced = queryValue("force") === "1";
     var supported = fwnum !== null && SUPPORTED[fwnum] === 1;
-    detEl.innerHTML = "firmware <b>" + (key || "unknown") + "</b>"
-        + " &middot; <b>" + (supported ? "supported" : "unsupported") + "</b>";
+    detEl.innerHTML = "Sistem sürümü <b>" + (key || "algılanamadı") + "</b>"
+        + " &middot; <b>" + (supported ? "destekleniyor" : "desteklenmiyor") + "</b>";
 
     var target = "jb.html" + location.search;
     if (location.search.indexOf("log=") === -1)
         target += (location.search ? "&" : "?") + "log=1";
 
-    var preflightKey = "pspulse-1352-preflight:" + target;
-    var cacheReloadKey = "pspulse-1352-cache-reload";
+    var preflightKey = "halkent-1352-preflight:" + target;
+    var cacheReloadKey = "halkent-1352-cache-reload";
 
     function go() {
         if (launched) return;
@@ -219,18 +209,18 @@
 
         if (sessionGet(preflightKey) !== "yes") {
             if (!sessionSet(preflightKey, "yes")) {
-                setState("SESSION STORAGE UNAVAILABLE — press X to continue", "warn");
-                waitForTap("SESSION STORAGE UNAVAILABLE — press X to continue", function () {
+                setState("OTURUM BELLEĞİ KULLANILAMIYOR — devam etmek için X tuşuna basın", "warn");
+                waitForTap("OTURUM BELLEĞİ KULLANILAMIYOR — devam etmek için X tuşuna basın", function () {
                     location.replace(target);
                 });
                 return;
             }
-            setState("preparing a clean memory state...", "warn");
+            setState("Bellek hazırlanıyor...", "warn");
             setTimeout(function () { location.reload(); }, 750);
             return;
         }
 
-        setState("loading jailbreak...", "warn");
+        setState("İşlem yükleniyor...", "warn");
         location.replace(target);
     }
 
@@ -262,8 +252,8 @@
     }
 
     if (!supported && !forced) {
-        setState("UNSUPPORTED FIRMWARE — execution stopped", "bad");
-        setCache("This host supports PS4 13.02, 13.04, 13.50 and 13.52 only.");
+        setState("DESTEKLENMEYEN SİSTEM SÜRÜMÜ — işlem durduruldu", "bad");
+        setCache("Bu sayfa yalnızca PS4 13.02, 13.04, 13.50 ve 13.52 sürümlerini destekler.");
         return;
     }
 
@@ -289,23 +279,23 @@
             return;
         }
         sessionSet(cacheReloadKey, "yes");
-        setCache("cache ready — reloading once", true);
+        setCache("Önbellek hazır — sayfa yenileniyor", true);
         setTimeout(function () { location.reload(); }, 750);
     }
 
     var ac = window.applicationCache;
     if (!ac || !document.documentElement.hasAttribute("manifest")) {
-        setCache("application cache unavailable");
+        setCache("Uygulama önbelleği kullanılamıyor");
         go();
         return;
     }
 
     ac.addEventListener("downloading", function () {
-        setCache("caching for offline use...");
+        setCache("Çevrimdışı kullanım için kaydediliyor...");
     }, false);
     ac.addEventListener("progress", function (event) {
         if (event && event.total > 0)
-            setCache("caching " + Math.round(event.loaded / event.total * 100) + "%");
+            setCache("Kaydediliyor: %" + Math.round(event.loaded / event.total * 100) + "%");
     }, false);
     ac.addEventListener("cached", function () {
         reloadWithFreshCache(false);
@@ -316,54 +306,51 @@
     ac.addEventListener("noupdate", function () {
         if (!finishCache()) return;
         sessionRemove(cacheReloadKey);
-        setCache("cached — offline ready", true);
+        setCache("Önbellek hazır — çevrimdışı kullanılabilir", true);
         go();
     }, false);
     ac.addEventListener("error", function () {
         if (!finishCache()) return;
         sessionRemove(cacheReloadKey);
-        setCache("cache unavailable");
-        waitForTap("CACHE FAILED — press X or tap to run online", go);
+        setCache("Önbellek kullanılamıyor");
+        waitForTap("ÖNBELLEK HATASI — çevrimiçi devam etmek için X tuşuna basın veya dokunun", go);
     }, false);
     ac.addEventListener("obsolete", function () {
         if (!finishCache()) return;
         sessionRemove(cacheReloadKey);
-        setCache("cache obsolete — clear browser data", false);
-        setState("CACHE OBSOLETE — clear browser data and reopen the host", "bad");
+        setCache("Önbellek güncel değil — tarayıcı verilerini temizleyin", false);
+        setState("ÖNBELLEK GÜNCEL DEĞİL — tarayıcı verilerini temizleyip sayfayı yeniden açın", "bad");
     }, false);
 
     if (!navigator.onLine) {
         finishCache();
-        setCache("offline — using cached files", true);
+        setCache("Çevrimdışı — önbellekteki dosyalar kullanılıyor", true);
         go();
     } else if (ac.status === ac.UPDATEREADY) {
         reloadWithFreshCache(true);
     } else if (ac.status === ac.CHECKING || ac.status === ac.DOWNLOADING ||
                ac.status === ac.UNCACHED) {
-        setCache("waiting for offline cache...");
+        setCache("Çevrimdışı önbellek bekleniyor...");
         cacheWatchdog = setTimeout(function () {
             if (!finishCache()) return;
-            setCache("cache check timed out");
-            waitForTap("CACHE TIMEOUT — press X or tap to run online", go);
+            setCache("Önbellek kontrolü zaman aşımına uğradı");
+            waitForTap("ÖNBELLEK ZAMAN AŞIMI — çevrimiçi devam etmek için X tuşuna basın veya dokunun", go);
         }, 60000);
     } else {
-        setCache("cached — checking for updates...");
+        setCache("Önbellek hazır — güncellemeler kontrol ediliyor...");
         try { ac.update(); } catch (error) {}
         cacheWatchdog = setTimeout(function () {
             if (!finishCache()) return;
             sessionRemove(cacheReloadKey);
-            setCache("cached — offline ready", true);
+            setCache("Önbellek hazır — çevrimdışı kullanılabilir", true);
             go();
         }, 5000);
     }
 }());
 </script>
 
-<!-- PSPulse support link: intentionally lightweight for the PS4 browser. -->
-<style id="pspulse-support-style">
-.pspulse-support{position:fixed;right:18px;bottom:18px;z-index:2147483647;display:block;padding:10px 15px;border:1px solid #9b87ff;border-radius:4px;background:#17151f;color:#b7a9ff!important;font:600 13px Arial,sans-serif;letter-spacing:.2px;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,.32)}
-.pspulse-support:hover,.pspulse-support:focus{background:#9b87ff;color:#101014!important;outline:none}
-</style>
+
+
 
 </body>
 </html>

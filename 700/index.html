@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 
 <head>
     <link rel="icon" type="image/png" href="../halkent.svg">
@@ -135,20 +135,10 @@
         }
         .grid button:focus { box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent); }
 
-        /* NodePlay */
-        .nodeplay {
-            align-items: center;
-            background: var(--panel);
-            border: 1px solid var(--line-bright);
-            display: flex;
-            justify-content: space-between;
-            margin-top: 14px;
-            min-height: 68px;
-            padding: 10px 18px;
-            text-decoration: none;
-        }
-        .nodeplay:hover, .nodeplay:focus { background: var(--panel-2); border-color: var(--accent); outline: 0; }
-        .nodeplay:focus { box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent); }
+        
+        
+        
+        
         .np-label { color: var(--dim); display: block; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
         .np-name { color: var(--text); display: block; font-size: 24px; margin-top: 2px; }
         .np-name b { color: var(--accent); font-weight: 400; }
@@ -194,25 +184,25 @@
 <body onload="if (window.ps4FirmwareSupported) load_exploit();">
     <div class="app">
         <header class="bar">
-            <span><b>HALKENT</b> // ps4 hosts</span>
-            <span class="bar-fw">fw 7.00-8.52 ready</span>
+            <span><b>HALKENT</b> // PS4 MERKEZİ</span>
+            <span class="bar-fw">Sürüm 7.00-8.52 hazır</span>
         </header>
 
         <main class="layout">
             <p class="kicker">$ ./launch --psfree-7xx</p>
-            <h1>PSFree <em>7.00-8.52</em> host</h1>
+            <h1>PSFree <em>7.00-8.52</em> merkezi</h1>
             <p class="sub">Online and offline Lapse auto GoldHEN by HALKENT.</p>
             <ul class="boot">
-                <li>[ <b>ok</b> ] psfree 1.7 chain ready</li>
-                <li>[ <b>ok</b> ] goldhen v2.4b18.12 staged</li>
-                <li>[ <b>ok</b> ] offline cache ready</li>
+                <li>[ <b>ok</b> ] PSFree 1.7 hazır</li>
+                <li>[ <b>ok</b> ] GoldHEN v2.4b18.12 hazır</li>
+                <li>[ <b>ok</b> ] Çevrimdışı önbellek hazır</li>
             </ul>
             <p class="fw-display">FW - <span id="PS4fw"></span></p>
 
             <div class="status">
                 <div id="notify" class="notification"><div id="log"></div></div>
                 <pre id="console" style="display:none" aria-hidden="true"></pre>
-                <div class="jailbreak-status" id="msgs2">Ready to Jailbreak</div>
+                <div class="jailbreak-status" id="msgs2">İşleme hazır</div>
                 <div class="status-meta">
                     <span class="status-pass">Successful attempts: <span id="passCounter">0</span></span>
                     <span class="status-fail">Unsuccessful attempts: <span id="failCounter">0</span></span>
@@ -220,28 +210,28 @@
             </div>
 
             <section class="controls">
-                <div class="section-title">Payloads</div>
+                <div class="section-title">Araçlar</div>
                 <div class="grid">
-                    <button onclick="load_PSFreeFix()" onMouseOver="document.getElementById('msgs2').innerHTML='PSFree Fix - Fixes PS4 PSFree exploit issues'" onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">PSFree Fix</button>
-                    <button onclick="load_ftp()" onMouseOver="document.getElementById('msgs2').innerHTML='FTP Server - Start FTP server for file access'" onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">FTP Server</button>
-                    <button onclick="load_ps4debug()" onMouseOver="document.getElementById('msgs2').innerHTML='PS4Debug - Enable debugging features'" onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">PS4Debug</button>
-                    <button onclick="load_app2usb()" onMouseOver="document.getElementById('msgs2').innerHTML='App2USB - Transfer applications to USB storage'" onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">App2USB</button>
-                    <button onclick="load_backup()" onMouseOver="document.getElementById('msgs2').innerHTML='Backup - Backup system data to USB'" onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">Backup</button>
-                    <button onclick="load_restore()" onMouseOver="document.getElementById('msgs2').innerHTML='Restore - Restore system data from USB'" onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">Restore</button>
-                    <button onclick="load_disable_updates()" onMouseOver="document.getElementById('msgs2').innerHTML='Disable Updates - Block system updates'" onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">Disable Updates</button>
-                    <button onclick="load_enable_updates()" onMouseOver="document.getElementById('msgs2').innerHTML='Enable Updates - Allow system updates'" onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">Enable Updates</button>
-                    <button onclick="load_appcache_install()" onMouseOver="document.getElementById('msgs2').innerHTML='AppCache Install - Install application cache'" onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">AppCache Install</button>
-                    <button onclick="load_history_blocker()" onMouseOver="document.getElementById('msgs2').innerHTML='History Blocker - Block browser history tracking'" onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">History Blocker</button>
-                    <button onclick="load_pup_decrypt()" onMouseOver="document.getElementById('msgs2').innerHTML='PUP Decrypt - Decrypt PS4 update files'" onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">PUP Decrypt</button>
-                    <button onclick="load_rif_renamer()" onMouseOver="document.getElementById('msgs2').innerHTML='RIF Renamer - Manage license files'" onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">RIF Renamer</button>
-                    <button onclick="load_webrte()" onMouseOver="document.getElementById('msgs2').innerHTML='WebRTE - Real-time editing features'" onmouseout="document.getElementById('msgs2').innerHTML='Ready to Jailbreak'">WebRTE</button>
+                    <button onclick="load_PSFreeFix()" onMouseOver="document.getElementById('msgs2').innerHTML='PSFree Fix - PSFree sorunlarını düzeltir'" onmouseout="document.getElementById('msgs2').innerHTML='İşleme hazır'">PSFree Fix</button>
+                    <button onclick="load_ftp()" onMouseOver="document.getElementById('msgs2').innerHTML='FTP Sunucusu - Dosya erişimi için FTP sunucusunu başlatır'" onmouseout="document.getElementById('msgs2').innerHTML='İşleme hazır'">FTP sunucusu</button>
+                    <button onclick="load_ps4debug()" onMouseOver="document.getElementById('msgs2').innerHTML='PS4Debug - Hata ayıklama özelliklerini etkinleştirir'" onmouseout="document.getElementById('msgs2').innerHTML='İşleme hazır'">PS4Debug</button>
+                    <button onclick="load_app2usb()" onMouseOver="document.getElementById('msgs2').innerHTML='App2USB - Uygulamaları USB depolamaya taşır'" onmouseout="document.getElementById('msgs2').innerHTML='İşleme hazır'">App2USB</button>
+                    <button onclick="load_backup()" onMouseOver="document.getElementById('msgs2').innerHTML='Yedekle - Sistem verilerini USB depolamaya yedekler'" onmouseout="document.getElementById('msgs2').innerHTML='İşleme hazır'">Yedekle</button>
+                    <button onclick="load_restore()" onMouseOver="document.getElementById('msgs2').innerHTML='Geri yükle - Sistem verilerini USB depolamadan geri yükler'" onmouseout="document.getElementById('msgs2').innerHTML='İşleme hazır'">Geri yükle</button>
+                    <button onclick="load_disable_updates()" onMouseOver="document.getElementById('msgs2').innerHTML='Güncellemeleri kapat - Sistem güncellemelerini engeller'" onmouseout="document.getElementById('msgs2').innerHTML='İşleme hazır'">Güncellemeleri kapat</button>
+                    <button onclick="load_enable_updates()" onMouseOver="document.getElementById('msgs2').innerHTML='Güncellemeleri aç - Sistem güncellemelerine izin verir'" onmouseout="document.getElementById('msgs2').innerHTML='İşleme hazır'">Güncellemeleri aç</button>
+                    <button onclick="load_appcache_install()" onMouseOver="document.getElementById('msgs2').innerHTML='Önbelleği kur - Uygulama önbelleğini yükler'" onmouseout="document.getElementById('msgs2').innerHTML='İşleme hazır'">Önbelleği kur</button>
+                    <button onclick="load_history_blocker()" onMouseOver="document.getElementById('msgs2').innerHTML='Geçmişi engelle - Tarayıcı geçmişi kaydını engeller'" onmouseout="document.getElementById('msgs2').innerHTML='İşleme hazır'">Geçmişi engelle</button>
+                    <button onclick="load_pup_decrypt()" onMouseOver="document.getElementById('msgs2').innerHTML='PUP Decrypt - PS4 güncelleme dosyalarının şifresini çözer'" onmouseout="document.getElementById('msgs2').innerHTML='İşleme hazır'">PUP Decrypt</button>
+                    <button onclick="load_rif_renamer()" onMouseOver="document.getElementById('msgs2').innerHTML='RIF Renamer - Lisans dosyalarını yönetir'" onmouseout="document.getElementById('msgs2').innerHTML='İşleme hazır'">RIF Renamer</button>
+                    <button onclick="load_webrte()" onMouseOver="document.getElementById('msgs2').innerHTML='WebRTE - Gerçek zamanlı düzenleme özellikleri'" onmouseout="document.getElementById('msgs2').innerHTML='İşleme hazır'">WebRTE</button>
                 </div>
             </section>
 
             
 
             <footer class="foot">
-                Author: <a href="https://t.me/sudoBlackArch">BlackArch</a> // Telegram: <a href="https://t.me/PlayStation_Pulse">Topluluk</a>
+                Kaynak: <a href="https://t.me/sudoBlackArch">BlackArch</a> // <a href="https://t.me/PlayStation_Pulse">Topluluk</a>
             </footer>
         </main>
     </div>
@@ -282,11 +272,8 @@
         }
     </script>
 
-<!-- PSPulse support link: intentionally lightweight for the PS4 browser. -->
-<style id="pspulse-support-style">
-.pspulse-support{position:fixed;right:18px;bottom:18px;z-index:2147483647;display:block;padding:10px 15px;border:1px solid #9b87ff;border-radius:4px;background:#17151f;color:#b7a9ff!important;font:600 13px Arial,sans-serif;letter-spacing:.2px;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,.32)}
-.pspulse-support:hover,.pspulse-support:focus{background:#9b87ff;color:#101014!important;outline:none}
-</style>
+
+
 
 </body>
 

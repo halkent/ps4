@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" manifest="cache.manifest">
+<html lang="tr" manifest="cache.manifest">
 <head>
     <link rel="icon" type="image/png" href="../halkent.svg">
 <meta charset="utf-8">
@@ -83,20 +83,10 @@
     .notice { border-left: 2px solid var(--amber); color: var(--muted); font-size: 13px; margin-top: 12px; padding: 5px 10px; }
     .notice b { color: var(--amber); font-weight: 400; }
 
-    /* NodePlay */
-    .nodeplay {
-        align-items: center;
-        background: var(--panel);
-        border: 1px solid var(--line-bright);
-        display: flex;
-        justify-content: space-between;
-        margin-top: 14px;
-        min-height: 68px;
-        padding: 10px 18px;
-        text-decoration: none;
-    }
-    .nodeplay:hover, .nodeplay:focus { background: var(--panel-2); border-color: var(--accent); outline: 0; }
-    .nodeplay:focus { box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent); }
+    
+    
+    
+    
     .np-label { color: var(--dim); display: block; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
     .np-name { color: var(--text); display: block; font-size: 24px; margin-top: 2px; }
     .np-name b { color: var(--accent); font-weight: 400; }
@@ -128,21 +118,21 @@
 <body>
     <div class="app">
         <header class="bar">
-            <span><b>HALKENT</b> // ps4 hosts</span>
-            <span class="bar-fw">fw 11.00-13.00 ready</span>
+            <span><b>HALKENT</b> // PS4 MERKEZİ</span>
+            <span class="bar-fw">Sürüm 11.00-13.00 hazır</span>
         </header>
 
         <main class="layout">
             <p class="kicker">$ ./launch --slopkit</p>
-            <h1>SlopKit <em>11.00-13.00</em> host</h1>
+            <h1>SlopKit <em>11.00-13.00</em> merkezi</h1>
             <p class="sub">Halkent PS4 merkezi.</p>
             <ul class="boot">
-                <li>[ <b>ok</b> ] webkit chain ready</li>
-                <li>[ <b>ok</b> ] offline cache ready</li>
+                <li>[ <b>ok</b> ] WebKit hazır</li>
+                <li>[ <b>ok</b> ] Çevrimdışı önbellek hazır</li>
             </ul>
 
             <section class="status" id="wrap">
-                <div id="state">detecting firmware...</div>
+                <div id="state">Sistem sürümü algılanıyor...</div>
                 <div id="det"></div>
                 <div id="cache"></div>
             </section>
@@ -150,7 +140,7 @@
             
 
             <footer class="foot">
-                Author: <a href="https://t.me/sudoBlackArch">BlackArch</a> // Telegram: <a href="https://t.me/PlayStation_Pulse">Topluluk</a>
+                Kaynak: <a href="https://t.me/sudoBlackArch">BlackArch</a> // <a href="https://t.me/PlayStation_Pulse">Topluluk</a>
             </footer>
         </main>
     </div>
@@ -214,19 +204,19 @@
 
     var why = !key ? "user-agent is not a PlayStation 4" :
         bug ? key + " uses " + bug : key + " is not supported by this host";
-    detEl.innerHTML = "firmware <b>" + (key || "unknown") + "</b>"
+    detEl.innerHTML = "Sistem sürümü <b>" + (key || "algılanamadı") + "</b>"
         + " &middot; bug <b>" + (bug || "none") + "</b> &middot; " + why;
 
     if (!bug) {
-        setState("UNSUPPORTED FIRMWARE — execution stopped", "bad");
-        setCache("Supported: 11.00, 11.50, 11.52, 12.00, 12.02, 12.50, 12.52 and 13.00.");
+        setState("DESTEKLENMEYEN SİSTEM SÜRÜMÜ — işlem durduruldu", "bad");
+        setCache("Desteklenen sürümler: 11.00, 11.50, 11.52, 12.00, 12.02, 12.50, 12.52 ve 13.00.");
         return;
     }
 
     var target = (bug === "lapse" ? "run_lapse.html" : "run_poops.html")
         + location.search;
-    var preflightKey = "pspulse-1300-preflight:" + target;
-    var cacheReloadKey = "pspulse-1300-cache-reload";
+    var preflightKey = "halkent-1300-preflight:" + target;
+    var cacheReloadKey = "halkent-1300-cache-reload";
 
     function waitForTap(message, action) {
         setState(message, "warn");
@@ -260,17 +250,17 @@
         launched = true;
         if (sessionGet(preflightKey) !== "yes") {
             if (!sessionSet(preflightKey, "yes")) {
-                setState("SESSION STORAGE UNAVAILABLE — press X to continue", "warn");
-                waitForTap("SESSION STORAGE UNAVAILABLE — press X to continue", function () {
+                setState("OTURUM BELLEĞİ KULLANILAMIYOR — devam etmek için X tuşuna basın", "warn");
+                waitForTap("OTURUM BELLEĞİ KULLANILAMIYOR — devam etmek için X tuşuna basın", function () {
                     location.replace(target);
                 });
                 return;
             }
-            setState("preparing a clean memory state...", "warn");
+            setState("Bellek hazırlanıyor...", "warn");
             setTimeout(function () { location.reload(); }, 750);
             return;
         }
-        setState("loading " + bug + " chain...", "warn");
+        setState(bug + " işlemi yükleniyor...", "warn");
         location.replace(target);
     }
 
@@ -296,7 +286,7 @@
             return;
         }
         sessionSet(cacheReloadKey, "yes");
-        setCache("cache ready — reloading once", true);
+        setCache("Önbellek hazır — sayfa yenileniyor", true);
         setTimeout(function () { location.reload(); }, 750);
     }
 
@@ -306,21 +296,21 @@
             // Poops must only run from the offline cache: an uncached run
             // fetches payload/kpatch over the network right before a
             // timing-sensitive race. Fail closed like upstream instead.
-            setCache("cache required — clear browser data and reopen the host");
-            setState("CACHE UNAVAILABLE — clear browser data and reopen the host", "bad");
+            setCache("Önbellek gerekli — tarayıcı verilerini temizleyip sayfayı yeniden açın");
+            setState("ÖNBELLEK KULLANILAMIYOR — tarayıcı verilerini temizleyip sayfayı yeniden açın", "bad");
             return;
         }
-        setCache("application cache unavailable");
+        setCache("Uygulama önbelleği kullanılamıyor");
         go();
         return;
     }
 
     ac.addEventListener("downloading", function () {
-        setCache("caching for offline use...");
+        setCache("Çevrimdışı kullanım için kaydediliyor...");
     }, false);
     ac.addEventListener("progress", function (event) {
         if (event && event.total > 0)
-            setCache("caching " + Math.round(event.loaded / event.total * 100) + "%");
+            setCache("Kaydediliyor: %" + Math.round(event.loaded / event.total * 100) + "%");
     }, false);
     ac.addEventListener("cached", function () {
         reloadWithFreshCache(false);
@@ -331,64 +321,61 @@
     ac.addEventListener("noupdate", function () {
         if (!finishCache()) return;
         sessionRemove(cacheReloadKey);
-        setCache("cached — offline ready", true);
+        setCache("Önbellek hazır — çevrimdışı kullanılabilir", true);
         go();
     }, false);
     ac.addEventListener("error", function () {
         if (!finishCache()) return;
         sessionRemove(cacheReloadKey);
-        setCache("cache unavailable");
+        setCache("Önbellek kullanılamıyor");
         if (bug === "poops") {
             // No online fallback for poops: running uncached adds network
             // jitter to the triple-free race. Upstream stops here too.
-            setState("CACHE FAILED — clear browser data and reopen the host", "bad");
+            setState("ÖNBELLEK HATASI — tarayıcı verilerini temizleyip sayfayı yeniden açın", "bad");
             return;
         }
-        waitForTap("CACHE FAILED — press X or tap to run online", go);
+        waitForTap("ÖNBELLEK HATASI — çevrimiçi devam etmek için X tuşuna basın veya dokunun", go);
     }, false);
     ac.addEventListener("obsolete", function () {
         if (!finishCache()) return;
         sessionRemove(cacheReloadKey);
-        setCache("cache obsolete — clear browser data", false);
-        setState("CACHE OBSOLETE — clear browser data and reopen the host", "bad");
+        setCache("Önbellek güncel değil — tarayıcı verilerini temizleyin", false);
+        setState("ÖNBELLEK GÜNCEL DEĞİL — tarayıcı verilerini temizleyip sayfayı yeniden açın", "bad");
     }, false);
 
     if (!navigator.onLine) {
         finishCache();
-        setCache("offline — using cached files", true);
+        setCache("Çevrimdışı — önbellekteki dosyalar kullanılıyor", true);
         go();
     } else if (ac.status === ac.UPDATEREADY) {
         reloadWithFreshCache(true);
     } else if (ac.status === ac.CHECKING || ac.status === ac.DOWNLOADING ||
                ac.status === ac.UNCACHED) {
-        setCache("waiting for offline cache...");
+        setCache("Çevrimdışı önbellek bekleniyor...");
         cacheWatchdog = setTimeout(function () {
             if (!finishCache()) return;
-            setCache("cache check timed out");
+            setCache("Önbellek kontrolü zaman aşımına uğradı");
             if (bug === "poops") {
-                setState("CACHE TIMEOUT — clear browser data and reopen the host", "bad");
+                setState("ÖNBELLEK ZAMAN AŞIMI — tarayıcı verilerini temizleyip sayfayı yeniden açın", "bad");
                 return;
             }
-            waitForTap("CACHE TIMEOUT — press X or tap to run online", go);
+            waitForTap("ÖNBELLEK ZAMAN AŞIMI — çevrimiçi devam etmek için X tuşuna basın veya dokunun", go);
         }, 60000);
     } else {
-        setCache("cached — checking for updates...");
+        setCache("Önbellek hazır — güncellemeler kontrol ediliyor...");
         try { ac.update(); } catch (error) {}
         cacheWatchdog = setTimeout(function () {
             if (!finishCache()) return;
             sessionRemove(cacheReloadKey);
-            setCache("cached — offline ready", true);
+            setCache("Önbellek hazır — çevrimdışı kullanılabilir", true);
             go();
         }, 5000);
     }
 }());
 </script>
 
-<!-- PSPulse support link: intentionally lightweight for the PS4 browser. -->
-<style id="pspulse-support-style">
-.pspulse-support{position:fixed;right:18px;bottom:18px;z-index:2147483647;display:block;padding:10px 15px;border:1px solid #9b87ff;border-radius:4px;background:#17151f;color:#b7a9ff!important;font:600 13px Arial,sans-serif;letter-spacing:.2px;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,.32)}
-.pspulse-support:hover,.pspulse-support:focus{background:#9b87ff;color:#101014!important;outline:none}
-</style>
+
+
 
 </body>
 </html>

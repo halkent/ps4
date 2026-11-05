@@ -63,7 +63,7 @@
             timerId = null;
         }
         if (!jailbreakRunning) {
-            label.textContent = 'Auto Jailbreak';
+            label.textContent = 'Otomatik başlat';
         }
     }
 
@@ -72,22 +72,22 @@
         jailbreakRunning = true;
         stopCountdown();
         jailbreakButton.disabled = true;
-        label.textContent = 'Executing';
+        label.textContent = 'İşlem yapılıyor';
 
         Promise.resolve()
             .then(function () {
                 return doJb();
             })
             .then(function () {
-                label.textContent = 'Completed';
+                label.textContent = 'Tamamlandı';
             })
             .catch(function (error) {
                 var message = error && error.message ?
                     error.message : String(error);
                 appendOutput('[-] ' + message);
-                appendOutput('[-] Fully close the browser before retrying. If it repeats, reboot the console.');
+                appendOutput('[-] Yeniden denemeden önce tarayıcıyı tamamen kapatın. Sorun tekrarlanırsa konsolu yeniden başlatın.');
                 label.textContent =
-                    'Failed — fully close the browser and reopen';
+                    'İşlem başarısız — tarayıcıyı tamamen kapatıp yeniden açın';
             });
     }
 
@@ -95,12 +95,12 @@
         stopCountdown();
         var countdown = 5;
         label.textContent =
-            'Auto Jailbreaking in: ' + countdown;
+            'Otomatik başlatmaya kalan süre: ' + countdown;
 
         timerId = setInterval(function () {
             countdown -= 1;
             label.textContent =
-                'Auto Jailbreaking in: ' + countdown;
+                'Otomatik başlatmaya kalan süre: ' + countdown;
 
             if (countdown <= 0) {
                 clearInterval(timerId);
@@ -184,7 +184,7 @@
             autoStarted = false;
             stopCountdown();
             label.textContent =
-                'Installing offline cache...';
+                'Çevrimdışı önbellek kuruluyor...';
         }
 
         function onProgress(event) {
@@ -192,7 +192,7 @@
             clearWatchdog();
             if (event && event.total > 0) {
                 label.textContent =
-                    'Installing offline cache: ' +
+                    'Çevrimdışı önbellek kuruluyor: ' +
                     Math.round(event.loaded / event.total * 100) +
                     '%';
             }
@@ -207,7 +207,7 @@
         function onCached() {
             if (jailbreakRunning) return;
             reloadForCleanStart(
-                'Cache installed — reloading for a clean start...',
+                'Önbellek kuruldu — temiz başlangıç için sayfa yenileniyor...',
                 false
             );
         }
@@ -215,7 +215,7 @@
         function onUpdate() {
             if (jailbreakRunning) return;
             reloadForCleanStart(
-                'Cache updated — reloading for a clean start...',
+                'Önbellek güncellendi — temiz başlangıç için sayfa yenileniyor...',
                 true
             );
         }
@@ -233,7 +233,7 @@
             finish();
             stopCountdown();
             label.textContent =
-                'Cache failed — retry manually';
+                'Önbellek hatası — yeniden deneyin';
         }
 
         function onObsolete() {
@@ -241,7 +241,7 @@
             finish();
             stopCountdown();
             label.textContent =
-                'Cache obsolete — clear browser data and reload';
+                'Önbellek güncel değil — tarayıcı verilerini temizleyip sayfayı yenileyin';
         }
 
         function reloadForCleanStart(message, swapCache) {
@@ -302,7 +302,7 @@
                    cache.status === cache.DOWNLOADING ||
                    cache.status === cache.UNCACHED) {
             label.textContent =
-                'Waiting for offline cache...';
+                'Çevrimdışı önbellek bekleniyor...';
             armWatchdog();
         } else {
             finish();
@@ -312,7 +312,7 @@
 
     if (uaElement) {
         uaElement.textContent =
-            'Running on: ' + navigator.userAgent;
+            'Tarayıcı: ' + navigator.userAgent;
     }
 
     if (!detectSupportedPS4()) {
@@ -320,9 +320,9 @@
         checkbox.disabled = true;
         jailbreakButton.disabled = true;
         label.textContent =
-            'Unsupported device or firmware';
+            'Cihaz veya sistem sürümü desteklenmiyor';
         appendOutput(
-            '[-] This host supports PS4 firmware 6.00-11.02 only.'
+            '[-] Bu sayfa yalnızca PS4 6.00–11.02 sistem sürümlerini destekler.'
         );
         return;
     }

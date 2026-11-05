@@ -344,50 +344,65 @@ body:not(.waiting) #spin {display:block !important;-webkit-animation:spin .9s li
 body.waiting #spin {display:none !important;}
 body.fail #spin {visibility:hidden;-webkit-animation:none;animation:none;}
 @-webkit-keyframes spin {to {-webkit-transform:rotate(360deg);}}
-</style></head><body class="waiting"><div class="grid"></div><div class="shell"><div id="brand"><div class="logo"><img class="brand-logo" src="../halkent.svg" alt="Halkent"><strong>HAL<span>KENT</span></strong></div><div class="badge">PS4 13.52 / 14.00 • GoldHEN</div></div><main class="stage"><section class="card"><button id="startJb" type="button" disabled>TIKLA</button><div id="cacheStatus" role="status">Çevrimdışı dosyalar kontrol ediliyor...</div></section></main><footer>Halkent TEKNİK SERVİS • PS4 13.52 / 14.00 · <a href="https://github.com/halkent/ps4/tree/main/1400" style="color:inherit">Kaynak kodu ve lisanslar</a></footer></div><script>
+#transitionSpinner{width:48px;height:48px;margin:0 auto 22px;border:4px solid #243851;border-top-color:#65ccf8;border-radius:50%;animation:spin 1s linear infinite;-webkit-animation:spin 1s linear infinite}#transitionTitle{font-size:26px;margin:0 0 12px}body.stopped #transitionSpinner,body.stopped #transitionHint{display:none}</style></head><body class="waiting"><div class="grid"></div><div class="shell"><div id="brand"><div class="logo"><img class="brand-logo" src="../halkent.svg" alt="Halkent"><strong>HAL<span>KENT</span></strong></div><div class="badge">PS4 13.52 / 14.00 • GoldHEN</div></div><main class="stage"><section class="card"><div id="transitionSpinner" aria-hidden="true"></div><h1 id="transitionTitle">Hazırlanıyor…</h1><p id="transitionHint" style="color:#99b6dc">Dosyalar hazır olduğunda işlem otomatik başlayacak.</p><div id="cacheStatus" role="status">Çevrimdışı dosyalar kontrol ediliyor...</div></section></main><footer>Halkent TEKNİK SERVİS • PS4 13.52 / 14.00 · <a href="https://github.com/halkent/ps4/tree/main/1400" style="color:inherit">Kaynak kodu ve lisanslar</a></footer></div><script>
 (function () {
-  var cache = window.applicationCache;
   var status = document.getElementById("cacheStatus");
-  var button = document.getElementById("startJb");
+  var title = document.getElementById("transitionTitle");
   var leaving = false;
-  button.addEventListener("click", function () {
-    if (button.disabled || leaving) return;
-    leaving = true;
-    button.disabled = true;
-    location.href = "jb.html?log=1&afterglow=run&mode=goldhen";
-  });
   function show(message) { status.textContent = message; }
-  function ready() {
-    if (leaving) return;
-    button.disabled = false;
-    show("Önbellek hazır. Başlamak için TIKLA’ya basın.");
+  function stop(heading, message) {
+    document.body.className = "waiting stopped";
+    title.textContent = heading;
+    show(message);
   }
-  if (!cache) {
-    show("Bu tarayıcı çevrimdışı önbelleği desteklemiyor.");
+  var match = (navigator.userAgent || "").match(/PlayStation\s+4[\/ ](\d+\.\d+)/);
+  if (!match) {
+    stop("PS4 tarayıcısında açın", "Bu işlem bilgisayar veya telefon tarayıcısında çalışmaz. PS4 üzerinde aynı adresi açın.");
     return;
   }
-  function failed() {
-    if (cache.status === cache.IDLE) ready();
-    else show("Önbellek hazırlanamadı. İnternet bağlantısını kontrol edip sayfayı yenileyin.");
+  if (match[1] !== "13.52" && match[1] !== "14.00") {
+    stop("Bu sistem sürümü desteklenmiyor", "Algılanan sürüm: " + match[1] + ". Bu sayfa yalnızca PS4 13.52 ve 14.00 içindir.");
+    return;
   }
-  cache.addEventListener("checking", function () {
-    show("Çevrimdışı dosyalar kontrol ediliyor...");
-  });
-  cache.addEventListener("downloading", function () {
-    show("Çevrimdışı dosyalar kaydediliyor...");
-  });
+  var cache = window.applicationCache;
+  if (!cache) {
+    stop("Önbellek kullanılamıyor", "PS4 tarayıcısı çevrimdışı önbelleği desteklemiyor. İşlem başlatılmadı.");
+    return;
+  }
+  function ready() {
+    if (leaving) return;
+    leaving = true;
+    title.textContent = "İşlem başlatılıyor…";
+    show("Dosyalar hazır. Lütfen bekleyin.");
+    setTimeout(function () {
+      location.replace("jb.html?log=1&afterglow=run&mode=goldhen");
+    }, 250);
+  }
+  function failed() {
+    if (leaving) return;
+    if (cache.status === cache.IDLE) ready();
+    else stop("Hazırlık tamamlanamadı", "İnternet bağlantısını kontrol edip sayfayı yenileyin. İşlem başlatılmadı.");
+  }
+  cache.addEventListener("checking", function () { show("Çevrimdışı dosyalar kontrol ediliyor..."); });
+  cache.addEventListener("downloading", function () { show("Çevrimdışı dosyalar kaydediliyor..."); });
   cache.addEventListener("progress", function (event) {
     if (event.total) show("Çevrimdışı dosyalar kaydediliyor: %" + Math.round(event.loaded / event.total * 100));
   });
   cache.addEventListener("cached", ready);
   cache.addEventListener("noupdate", ready);
   function applyUpdate() {
-    try { cache.swapCache(); } catch (error) { failed(); return; }
+    if (leaving) return;
+    try { cache.swapCache(); } catch (error) {
+      stop("Güncelleme uygulanamadı", "Sayfayı yenileyin. İşlem başlatılmadı.");
+      return;
+    }
     ready();
   }
   cache.addEventListener("updateready", applyUpdate);
   cache.addEventListener("error", failed);
-  cache.addEventListener("obsolete", failed);
+  cache.addEventListener("obsolete", function () {
+    if (!leaving) stop("Önbellek güncel değil", "PS4 tarayıcı verilerini temizleyip bu sayfayı yeniden açın.");
+  });
   if (cache.status === cache.UPDATEREADY) applyUpdate();
 })();
 </script></body></html>

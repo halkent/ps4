@@ -129,20 +129,10 @@
         }
         .grid-goldhen button:focus, .grid button:focus { box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent); }
 
-        /* NodePlay */
-        .nodeplay {
-            align-items: center;
-            background: var(--panel);
-            border: 1px solid var(--line-bright);
-            display: flex;
-            justify-content: space-between;
-            margin-top: 14px;
-            min-height: 68px;
-            padding: 10px 18px;
-            text-decoration: none;
-        }
-        .nodeplay:hover, .nodeplay:focus { background: var(--panel-2); border-color: var(--accent); outline: 0; }
-        .nodeplay:focus { box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent); }
+        
+        
+        
+        
         .np-label { color: var(--dim); display: block; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
         .np-name { color: var(--text); display: block; font-size: 24px; margin-top: 2px; }
         .np-name b { color: var(--accent); font-weight: 400; }
@@ -209,22 +199,22 @@
 <body>
     <div class="app">
         <header class="bar">
-            <span><b>HALKENT</b> // ps4 hosts</span>
-            <span class="bar-fw">fw 6.72 ready</span>
+            <span><b>HALKENT</b> // PS4 MERKEZİ</span>
+            <span class="bar-fw">Sürüm 6.72 hazır</span>
         </header>
 
         <main class="layout">
             <p class="kicker">$ ./launch --fw-672</p>
-            <h1>FW <em>6.72</em> host</h1>
+            <h1>FW <em>6.72</em> merkezi</h1>
             <p class="sub">Halkent PS4 merkezi.</p>
             <ul class="boot">
-                <li>[ <b>ok</b> ] exploit chain ready</li>
-                <li>[ <b>ok</b> ] offline cache ready</li>
+                <li>[ <b>ok</b> ] İşlem hazır</li>
+                <li>[ <b>ok</b> ] Çevrimdışı önbellek hazır</li>
             </ul>
 
             <div class="status">
                 <div id="progress">
-                    <div id="msgs">Ready to Jailbreak</div>
+                    <div id="msgs">İşleme hazır</div>
                     <div class="status-meta">
                         <span class="status-pass">Pass: <span id="passCounter">0</span></span>
                         <span class="status-fail">Fail: <span id="failCounter">0</span></span>
@@ -236,66 +226,66 @@
                 <div class="section-title">GoldHEN</div>
                 <div class="grid-goldhen">
                     <button onclick="load_goldhen18()" onmouseover="msgs.innerHTML='GoldHEN v2.4b18.12 for 6.72 FW'"
-                        onmouseout="msgs.innerHTML='Ready to Jailbreak'">
+                        onmouseout="msgs.innerHTML='İşleme hazır'">
                         GoldHEN v2.4b18.12
                     </button>
                     <button onclick="load_goldhen5()" onmouseover="msgs.innerHTML='GoldHEN v2.4b18.10 for 6.72 FW'"
-                        onmouseout="msgs.innerHTML='Ready to Jailbreak'">
+                        onmouseout="msgs.innerHTML='İşleme hazır'">
                         GoldHEN v2.4b18.10
                     </button>
                 </div>
 
-                <div class="section-title">Payloads</div>
+                <div class="section-title">Araçlar</div>
                 <div class="grid">
                     <button onclick="load_ftp()"
-                        onmouseover="msgs.innerHTML='FTP Server - Start FTP server for file access'"
-                        onmouseout="msgs.innerHTML='Ready to Jailbreak'">
+                        onmouseover="msgs.innerHTML='FTP Sunucusu - Dosya erişimi için FTP sunucusunu başlatır'"
+                        onmouseout="msgs.innerHTML='İşleme hazır'">
                         FTP Server
                     </button>
-                    <button onclick="load_ps4debug()" onmouseover="msgs.innerHTML='PS4Debug - Enable debugging features'"
-                        onmouseout="msgs.innerHTML='Ready to Jailbreak'">
+                    <button onclick="load_ps4debug()" onmouseover="msgs.innerHTML='PS4Debug - Hata ayıklama özelliklerini etkinleştirir'"
+                        onmouseout="msgs.innerHTML='İşleme hazır'">
                         PS4Debug
                     </button>
                     <button onclick="load_app2usb()"
-                        onmouseover="msgs.innerHTML='App2USB - Transfer applications to USB storage'"
-                        onmouseout="msgs.innerHTML='Ready to Jailbreak'">
+                        onmouseover="msgs.innerHTML='App2USB - Uygulamaları USB depolamaya taşır'"
+                        onmouseout="msgs.innerHTML='İşleme hazır'">
                         App2USB
                     </button>
-                    <button onclick="load_backup()" onmouseover="msgs.innerHTML='Backup - Backup system data to USB'"
-                        onmouseout="msgs.innerHTML='Ready to Jailbreak'">
+                    <button onclick="load_backup()" onmouseover="msgs.innerHTML='Yedekle - Sistem verilerini USB depolamaya yedekler'"
+                        onmouseout="msgs.innerHTML='İşleme hazır'">
                         Backup
                     </button>
-                    <button onclick="load_restore()" onmouseover="msgs.innerHTML='Restore - Restore system data from USB'"
-                        onmouseout="msgs.innerHTML='Ready to Jailbreak'">
+                    <button onclick="load_restore()" onmouseover="msgs.innerHTML='Geri yükle - Sistem verilerini USB depolamadan geri yükler'"
+                        onmouseout="msgs.innerHTML='İşleme hazır'">
                         Restore
                     </button>
                     <button onclick="load_disableUpdates()"
-                        onmouseover="msgs.innerHTML='Disable Updates - Block system updates'"
-                        onmouseout="msgs.innerHTML='Ready to Jailbreak'">
+                        onmouseover="msgs.innerHTML='Güncellemeleri kapat - Sistem güncellemelerini engeller'"
+                        onmouseout="msgs.innerHTML='İşleme hazır'">
                         Disable Updates
                     </button>
                     <button onclick="load_enableUpdates()"
-                        onmouseover="msgs.innerHTML='Enable Updates - Allow system updates'"
-                        onmouseout="msgs.innerHTML='Ready to Jailbreak'">
+                        onmouseover="msgs.innerHTML='Güncellemeleri aç - Sistem güncellemelerine izin verir'"
+                        onmouseout="msgs.innerHTML='İşleme hazır'">
                         Enable Updates
                     </button>
-                    <button onclick="load_rifRenamer()" onmouseover="msgs.innerHTML='RIF Renamer - Manage license files'"
-                        onmouseout="msgs.innerHTML='Ready to Jailbreak'">
+                    <button onclick="load_rifRenamer()" onmouseover="msgs.innerHTML='RIF Renamer - Lisans dosyalarını yönetir'"
+                        onmouseout="msgs.innerHTML='İşleme hazır'">
                         RIF Renamer
                     </button>
                     <button onclick="load_appcacheInstall()"
-                        onmouseover="msgs.innerHTML='AppCache Install - Install application cache'"
-                        onmouseout="msgs.innerHTML='Ready to Jailbreak'">
+                        onmouseover="msgs.innerHTML='Önbelleği kur - Uygulama önbelleğini yükler'"
+                        onmouseout="msgs.innerHTML='İşleme hazır'">
                         AppCache Install
                     </button>
                     <button onclick="load_historyBlocker()"
-                        onmouseover="msgs.innerHTML='History Blocker - Block browser history tracking'"
-                        onmouseout="msgs.innerHTML='Ready to Jailbreak'">
+                        onmouseover="msgs.innerHTML='Geçmişi engelle - Tarayıcı geçmişi kaydını engeller'"
+                        onmouseout="msgs.innerHTML='İşleme hazır'">
                         History Blocker
                     </button>
                     <button onclick="load_pupDecrypt()"
-                        onmouseover="msgs.innerHTML='PUP Decrypt - Decrypt PS4 update files'"
-                        onmouseout="msgs.innerHTML='Ready to Jailbreak'">
+                        onmouseover="msgs.innerHTML='PUP Decrypt - PS4 güncelleme dosyalarının şifresini çözer'"
+                        onmouseout="msgs.innerHTML='İşleme hazır'">
                         PUP Decrypt
                     </button>
                 </div>
@@ -304,7 +294,7 @@
             
 
             <footer class="foot">
-                Author: <a href="https://t.me/sudoBlackArch">BlackArch</a> // Telegram: <a href="https://t.me/PlayStation_Pulse">Topluluk</a>
+                Kaynak: <a href="https://t.me/sudoBlackArch">BlackArch</a> // <a href="https://t.me/PlayStation_Pulse">Topluluk</a>
             </footer>
         </main>
     </div>
@@ -419,11 +409,8 @@
         }
     </script>
 
-<!-- PSPulse support link: intentionally lightweight for the PS4 browser. -->
-<style id="pspulse-support-style">
-.pspulse-support{position:fixed;right:18px;bottom:18px;z-index:2147483647;display:block;padding:10px 15px;border:1px solid #9b87ff;border-radius:4px;background:#17151f;color:#b7a9ff!important;font:600 13px Arial,sans-serif;letter-spacing:.2px;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,.32)}
-.pspulse-support:hover,.pspulse-support:focus{background:#9b87ff;color:#101014!important;outline:none}
-</style>
+
+
 
 </body>
 
