@@ -2,7 +2,7 @@ CACHE MANIFEST
 # Halkent integration 2026-11-05
 # generated; do not edit by hand
 includes/script.js #f2e546ec0b6217b28b8417d5a99d2bcaf6a2d1b0f0f4d1f835e46d9b7e58cbb3
-index.html #2a6ef4cdcbba3d321aac577ff60c0cdd858a6303b31f95f776035f12801c8fb3
+index.html #75b2c0190c29e3f03a735f2c9a18bfb9839eecade93b0c20a719acebf1fbfd60
 src/lapse.js #5ce41c0f91da7fbf76711a514ab46d391ff2e9ab0e653aa0929e140a9159a967
 src/loader.js #6f104e6241c0857ff9cba7b2c299ef443e95039bf5b534dd17308db6dfe78afe
 src/main.js #1e964e4535efa09a1cfeb8f1af6dc8b25fe5f8deb0e751548ef20ba6585d69e9
