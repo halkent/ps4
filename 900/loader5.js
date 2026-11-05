@@ -18,21 +18,21 @@ function hide() {
     if (notify) notify.style.display = 'none';
 }
 function awaitpl() {
-    showNotice('Loading Payload...');
-    setTimeout(function () { showNotice(typeof LoadedMSG === 'string' ? LoadedMSG : 'Payload Loaded!'); }, 800);
+    showNotice('Yük dosyası yükleniyor...');
+    setTimeout(function () { showNotice(typeof LoadedMSG === 'string' ? LoadedMSG : 'Yük dosyası yüklendi!'); }, 800);
     setTimeout(ani2, 4000);
 }
-function load_exploit() { setTimeout(function () { showNotice('Loading Jailbreak... Please Wait !!!'); }, 50); }
+function load_exploit() { setTimeout(function () { showNotice('İşlem başlatılıyor... Lütfen bekleyin.'); }, 50); }
 function load_exploit_already() {
-    setTimeout(function () { showNotice('Jailbreak is already Loaded !!!'); }, 50);
+    setTimeout(function () { showNotice('İşlem zaten uygulanmış — ek işlem gerekmiyor'); }, 50);
     setTimeout(ani2, 4000);
 }
 function goldhen_already() {
-    setTimeout(function () { showNotice('GoldHEN BinLoader is already running.'); }, 50);
+    setTimeout(function () { showNotice('GoldHEN BinLoader zaten çalışıyor.'); }, 50);
     setTimeout(ani2, 4000);
 }
 function load_exploit_done() {
-    setTimeout(function () { showNotice('Jailbreak Success !!! GoldHEN v2.4b18.10 Loaded !!!'); }, 50);
+    setTimeout(function () { showNotice('İşlem başarılı! GoldHEN v2.4b18.10 yüklendi.'); }, 50);
     setTimeout(ani2, 4000);
 }
 function LoadFromGHBLS(PLfile) {
@@ -42,21 +42,21 @@ function LoadFromGHBLS(PLfile) {
     statusReq.onload = function () {
         var response;
         try { response = JSON.parse(statusReq.responseText || '{}'); }
-        catch (e) { alert('GoldHEN BinLoader returned an invalid response.'); return; }
+        catch (e) { alert('GoldHEN BinLoader geçersiz yanıt verdi.'); return; }
         if ((statusReq.status !== 200 && statusReq.status !== 304) || response.status !== 'ready') {
-            alert(response.status === 'busy' ? 'Cannot load payload because the BinLoader server is busy.' : 'Cannot load payload because the BinLoader server is not ready.');
+            alert(response.status === 'busy' ? 'BinLoader meşgul olduğu için dosya yüklenemiyor.' : 'BinLoader henüz hazır olmadığı için dosya yüklenemiyor.');
             return;
         }
         getPayload(PLfile, function (payloadReq) {
             if ((payloadReq.status === 200 || payloadReq.status === 304) && payloadReq.response) {
                 sendPayload('http://127.0.0.1:9090', payloadReq.response, function (sendReq) {
                     if (sendReq.status === 200 || sendReq.status === 304 || sendReq.status === 0) awaitpl();
-                    else alert('Payload delivery failed. Please retry.');
+                    else alert('Dosya gönderilemedi. Lütfen yeniden deneyin.');
                 });
-            } else alert('Payload file could not be loaded.');
+            } else alert('Yük dosyası açılamadı.');
         });
     };
-    statusReq.onerror = function () { alert('Cannot load payload because the BinLoader server is not running.'); };
+    statusReq.onerror = function () { alert('BinLoader çalışmadığı için dosya yüklenemiyor.'); };
     statusReq.ontimeout = statusReq.onerror;
     statusReq.send();
 }

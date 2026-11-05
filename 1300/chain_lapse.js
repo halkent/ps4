@@ -279,7 +279,7 @@ function makeRpc(worker) {
         const ua = navigator.userAgent;
         const { key, off } = offsetsFor(ua);
         mark("FW", key || "(not a PS4 UA)");
-        if (!off) { state("no offsets for this firmware", "bad"); return; }
+        if (!off) { state("Bu sistem sürümü için gerekli adresler bulunamadı", "bad"); return; }
 
         mark("FW-STATUS", key + " -- " + (off.fw_status
             || "no status recorded in the offsets block."));
@@ -289,7 +289,7 @@ function makeRpc(worker) {
                   + "WITHHELD. Nothing is freed twice and no reboot is owed."
                 : "  -- ARMED: the worker issues a REAL aio_multi_delete"));
 
-        state("running the primitive...", "warn");
+        state("Bellek erişimi hazırlanıyor...", "warn");
 
         await new Promise(function (r) { setTimeout(r, 0); });
         const carrier = await establishPrimitive({
@@ -642,7 +642,7 @@ function makeRpc(worker) {
             const su0 = sc(SYS.setuid, 0).i32;
             if (uid0 === 0 || su0 === 0) {
                 mark("ALREADY-ROOT", "getuid=" + uid0 + " setuid(0)=" + su0);
-                state("ALREADY JAILBROKEN -- nothing to do", "ok");
+                state("İşlem zaten uygulanmış — ek işlem gerekmiyor", "ok");
                 return;
             }
         } catch (e) {}
@@ -3141,7 +3141,7 @@ function makeRpc(worker) {
                                         + " kbase=" + (kbase || "null")
                                         + " blob=" + (kpatch ? kpatch.length : 0));
                                 } else try {
-                                    state("stage 9: kernel patches...", "warn");
+                                    state("stage 9: Çekirdek yamaları uygulanıyor...", "warn");
                                     const sysent = kbase.add32(SYSENT_661);
                                     const gadget = kbase.add32(JMP_RSI_GADGET);
 
@@ -3590,7 +3590,7 @@ function makeRpc(worker) {
             if (jailbroken) mark("JAILBROKEN", "uid=0 cr_sceAuthId=SYSCORE "
                 + "cr_sceCaps=-1 fd_rdir=rootvnode fd_jdir=rootvnode");
         } else if (committed) {
-            state("FREED BUT NOT RECLAIMED -- REBOOT NOW", "bad");
+            state("Bellek geri alınamadı — konsolu şimdi yeniden başlatın", "bad");
         } else if (failCount === 0) {
             state("no win in " + attemptsUsed + " attempts", "warn");
         } else {
@@ -3600,7 +3600,7 @@ function makeRpc(worker) {
     } catch (e) {
         mark("STEP4D-FAILED", (e && e.message) ? e.message : String(e));
         mark("PROOF-SUMMARY", "pass=" + passCount + " fail=" + failCount);
-        state("FAILED -- see log", "bad");
+        state("İşlem başarısız — ayrıntılar için işlem günlüğüne bakın", "bad");
     } finally {
 
         const teardown = !committed || repaired;
@@ -3824,7 +3824,7 @@ function makeRpc(worker) {
                     : "") + ". See the stage 8/9/10 marks for what is left.");
             try {
                 stateEl.textContent = payloadRunning
-                    ? "ALL DONE"
+                    ? "İşlem tamamlandı"
                     : kpatched ? "ROOT + KERNEL PATCHED -- NO REBOOT"
                     : jailbroken ? "ROOT -- NO REBOOT NEEDED"
                     : "REPAIRED -- NO REBOOT NEEDED";

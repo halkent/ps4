@@ -147,7 +147,7 @@ function toogle_payload(PLfile) {
       localStorage.passcount = ++localStorage.passcount;
       if (window.passCounter) window.passCounter.innerHTML = localStorage.passcount;
      } else {
-      console.error('Failed to load payload:', PLfile);
+      console.error('Yüklenemedi: payload:', PLfile);
       localStorage.failcount = ++localStorage.failcount;
       if (window.failCounter) window.failCounter.innerHTML = localStorage.failcount;
      }

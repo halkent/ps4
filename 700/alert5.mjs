@@ -29,8 +29,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
 addEventListener('unhandledrejection', event => {
     const reason = event.reason;
     alert(
-        'Kernel Exploit Failed! Shutdown and Try Again.\n\n'
-        + 'Unhandled rejection\n'
+        'Çekirdek işlemi başarısız! Konsolu kapatıp açarak yeniden deneyin.\n\n'
+        + 'İşlem sırasında beklenmeyen hata\n'
         + `${reason}\n`
         + `${reason.sourceURL}:${reason.line}:${reason.column}\n`
         + `${reason.stack}`
@@ -40,8 +40,8 @@ addEventListener('unhandledrejection', event => {
 addEventListener('error', event => {
     const reason = event.error;
     alert(
-        'Kernel Exploit Failed! Restart and Try Again.\n\n'
-        + 'Unhandled error\n'
+        'Çekirdek işlemi başarısız! Konsolu yeniden başlatıp tekrar deneyin.\n\n'
+        + 'Beklenmeyen hata\n'
         + `${reason}\n`
         + `${reason.sourceURL}:${reason.line}:${reason.column}\n`
         + `${reason.stack}`

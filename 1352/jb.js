@@ -160,7 +160,7 @@ let allDone = false,
     mark("BUILD", "jb=skipjb2 base=ef1670a");
     mark("FW", key || "(not a PS4 UA)");
     if (!off) {
-      state("no offsets for this firmware", "bad");
+      state("Bu sistem sürümü için gerekli adresler bulunamadı", "bad");
       return;
     }
     const fwKey = key || "unknown";
@@ -305,7 +305,7 @@ let allDone = false,
     if (retryCount() > 0)
       mark("AUTO-RELOAD-RESUME", "reload=" + retryCount() + "/" + RETRY_MAX);
 
-    state("running the primitive...", "warn");
+    state("Bellek erişimi hazırlanıyor...", "warn");
     await new Promise((r) => setTimeout(r, 0));
 
     const PRIMITIVE_LOUD = /FAIL|ERROR|THREW|RETRY|ABORT|PASS/i;

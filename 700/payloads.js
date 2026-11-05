@@ -1,6 +1,6 @@
 //------BIG THANKS TO SISTRO FOR THIS !!!!!--------
 
-var LoadedMSG = "Payload Loaded!";
+var LoadedMSG = "Yük dosyası yüklendi!";
 
 var getPayload = function(payload, onLoadEndCallback) {
   var req = new XMLHttpRequest();
@@ -60,7 +60,7 @@ function Loadpayloadlocal(PLfile){ //Loading Payload via Payload Param.
                 }
 			});
 			} else {
-				alert("Cannot Load Payload Because The BinLoader Server Is Busy");//<<If server is busy, alert message.
+				alert("BinLoader meşgul olduğu için dosya yüklenemiyor.");//<<If server is busy, alert message.
 				return;
 		  }
 	  };
@@ -93,7 +93,7 @@ function load_PSFreeFix(){
         // Also show loading message
         if (document.getElementById('log')) {
             awaitpl();
-            LoadedMSG = "PSFree Fix Payload Loaded!";
+            LoadedMSG = "PSFree Fix Yük dosyası yüklendi!";
         }
     }
 }
@@ -105,7 +105,7 @@ function load_app2usb(){
         Loadpayloadlocal("./payloads/app2usb.bin");
         if (document.getElementById('log')) {
             awaitpl();
-            LoadedMSG = "App2USB Payload Loaded!";
+            LoadedMSG = "App2USB Yük dosyası yüklendi!";
         }
     }
 }
@@ -117,7 +117,7 @@ function load_appcache_install(){
         Loadpayloadlocal("./payloads/appcache-install.bin");
         if (document.getElementById('log')) {
             awaitpl();
-            LoadedMSG = "AppCache Install Payload Loaded!";
+            LoadedMSG = "AppCache Install Yük dosyası yüklendi!";
         }
     }
 }
@@ -129,7 +129,7 @@ function load_backup(){
         Loadpayloadlocal("./payloads/backup.bin");
         if (document.getElementById('log')) {
             awaitpl();
-            LoadedMSG = "Backup Payload Loaded!";
+            LoadedMSG = "Backup Yük dosyası yüklendi!";
         }
     }
 }
@@ -141,7 +141,7 @@ function load_disable_updates(){
         Loadpayloadlocal("./payloads/disable-updates.bin");
         if (document.getElementById('log')) {
             awaitpl();
-            LoadedMSG = "Disable Updates Payload Loaded!";
+            LoadedMSG = "Disable Updates Yük dosyası yüklendi!";
         }
     }
 }
@@ -153,7 +153,7 @@ function load_enable_updates(){
         Loadpayloadlocal("./payloads/enable-updates.bin");
         if (document.getElementById('log')) {
             awaitpl();
-            LoadedMSG = "Enable Updates Payload Loaded!";
+            LoadedMSG = "Enable Updates Yük dosyası yüklendi!";
         }
     }
 }
@@ -165,7 +165,7 @@ function load_ftp(){
         Loadpayloadlocal("./payloads/ftp.bin");
         if (document.getElementById('log')) {
             awaitpl();
-            LoadedMSG = "FTP Server Payload Loaded!";
+            LoadedMSG = "FTP Server Yük dosyası yüklendi!";
         }
     }
 }
@@ -177,7 +177,7 @@ function load_history_blocker(){
         Loadpayloadlocal("./payloads/history-blocker.bin");
         if (document.getElementById('log')) {
             awaitpl();
-            LoadedMSG = "History Blocker Payload Loaded!";
+            LoadedMSG = "History Blocker Yük dosyası yüklendi!";
         }
     }
 }
@@ -189,7 +189,7 @@ function load_ps4debug(){
         Loadpayloadlocal("./payloads/ps4debug.bin");
         if (document.getElementById('log')) {
             awaitpl();
-            LoadedMSG = "PS4Debug Payload Loaded!";
+            LoadedMSG = "PS4Debug Yük dosyası yüklendi!";
         }
     }
 }
@@ -201,7 +201,7 @@ function load_pup_decrypt(){
         Loadpayloadlocal("./payloads/pup-decrypt.bin");
         if (document.getElementById('log')) {
             awaitpl();
-            LoadedMSG = "PUP Decrypt Payload Loaded!";
+            LoadedMSG = "PUP Decrypt Yük dosyası yüklendi!";
         }
     }
 }
@@ -213,7 +213,7 @@ function load_restore(){
         Loadpayloadlocal("./payloads/restore.bin");
         if (document.getElementById('log')) {
             awaitpl();
-            LoadedMSG = "Restore Payload Loaded!";
+            LoadedMSG = "Restore Yük dosyası yüklendi!";
         }
     }
 }
@@ -225,7 +225,7 @@ function load_rif_renamer(){
         Loadpayloadlocal("./payloads/rif-renamer.bin");
         if (document.getElementById('log')) {
             awaitpl();
-            LoadedMSG = "RIF Renamer Payload Loaded!";
+            LoadedMSG = "RIF Renamer Yük dosyası yüklendi!";
         }
     }
 }
@@ -237,7 +237,7 @@ function load_webrte(){
         Loadpayloadlocal("./payloads/WebRTE_900.bin");
         if (document.getElementById('log')) {
             awaitpl();
-            LoadedMSG = "WebRTE Payload Loaded!";
+            LoadedMSG = "WebRTE Yük dosyası yüklendi!";
         }
     }
 }

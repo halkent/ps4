@@ -25,11 +25,11 @@ function formatError(reason, event) {
 }
 
 addEventListener('unhandledrejection', function (event) {
-    alert('Unhandled rejection\n' + formatError(event.reason, event));
+    alert('İşlem sırasında beklenmeyen hata\n' + formatError(event.reason, event));
 });
 
 addEventListener('error', function (event) {
-    alert('Unhandled error\n' + formatError(event.error, event));
+    alert('Beklenmeyen hata\n' + formatError(event.error, event));
     return true;
 });
 

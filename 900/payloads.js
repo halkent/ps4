@@ -1,7 +1,7 @@
 // Payload delivery helpers for the PSPulse 9.xx host.
 // Keep this file ES5-compatible for the PS4 browser.
 
-var LoadedMSG = "Payload Loaded!";
+var LoadedMSG = "Yük dosyası yüklendi!";
 var payloadRequestInFlight = false;
 
 function xhrSucceeded(req) {
@@ -62,7 +62,7 @@ function fallbackToExploitLoader(PLfile) {
 
 function Loadpayloadlocal(PLfile) {
     if (payloadRequestInFlight) {
-        alert('Another payload request is already in progress.');
+        alert('Başka bir yükleme işlemi sürüyor. Lütfen tamamlanmasını bekleyin.');
         return;
     }
 
@@ -84,7 +84,7 @@ function Loadpayloadlocal(PLfile) {
         if (!xhrSucceeded(statusReq) || responseJson.status !== 'ready') {
             if (responseJson.status === 'busy') {
                 finishPayloadRequest();
-                alert('Cannot load the payload because the BinLoader server is busy.');
+                alert('BinLoader meşgul olduğu için dosya yüklenemiyor.');
             } else {
                 fallbackToExploitLoader(PLfile);
             }
@@ -116,7 +116,7 @@ function Loadpayloadlocal(PLfile) {
 
 function loadPayloadWithConfirmation(file, label, question) {
     if (!confirm(question)) return;
-    LoadedMSG = label + ' Payload Loaded!';
+    LoadedMSG = label + ' Yük dosyası yüklendi!';
     Loadpayloadlocal(file);
 }
 

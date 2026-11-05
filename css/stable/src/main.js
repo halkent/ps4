@@ -10,7 +10,7 @@ function load_script(src) {
             if (settled) return;
             settled = true;
             delete cssLoadedScripts[src];
-            reject(new Error('Timed out loading ' + src));
+            reject(new Error('Yükleme zaman aşımına uğradı: ' + src));
         }, 20000);
         script.src = src;
         script.async = false;
@@ -25,7 +25,7 @@ function load_script(src) {
             settled = true;
             clearTimeout(timeout);
             delete cssLoadedScripts[src];
-            reject(new Error('Failed to load ' + src));
+            reject(new Error('Yüklenemedi: ' + src));
         };
         document.head.appendChild(script);
     });
@@ -35,10 +35,10 @@ function load_script(src) {
 async function fetch_binary(url) {
     var response = await fetch(url);
     if (response.status < 200 || response.status >= 300) {
-        throw new Error('Failed to fetch ' + url + ' (HTTP ' + response.status + ')');
+        throw new Error('Dosya indirilemedi: ' + url + ' (HTTP ' + response.status + ')');
     }
     var buffer = await response.arrayBuffer();
-    if (!buffer || buffer.byteLength === 0) throw new Error('Downloaded file is empty: ' + url);
+    if (!buffer || buffer.byteLength === 0) throw new Error('İndirilen dosya boş: ' + url);
     return new Uint8Array(buffer);
 }
 
@@ -55,14 +55,14 @@ function report_boot_error(error) {
 }
 
 async function doJb() {
-    if (cssJailbreakStarted) throw new Error('Jailbreak already started. Close and reopen the browser before retrying.');
+    if (cssJailbreakStarted) throw new Error('İşlem zaten başlatıldı. Yeniden denemeden önce tarayıcıyı kapatıp açın.');
     cssJailbreakStarted = true;
     try {
         await load_script('src/misc.js');
         version.init();
-        if (version.console !== 4) throw new Error('Only PlayStation 4 is supported.');
+        if (version.console !== 4) throw new Error('Bu sayfayı PS4 tarayıcısında açın.');
         if (version.major < 6 || version.major > 11 || (version.major === 11 && version.minor > 0x02)) {
-            throw new Error('Unsupported PS4 firmware ' + version.toString() + '. Expected 6.00-11.02.');
+            throw new Error('Desteklenmeyen PS4 sistem sürümü: ' + version.toString() + '. Desteklenen sürümler: 6.00–11.02.');
         }
         if (exploitChain !== 'lapse' && exploitChain !== 'netctrl') exploitChain = 'lapse';
         await load_script('src/ps4/constants.js');
@@ -78,7 +78,7 @@ async function doJb() {
         await load_script('src/workers.js');
         await load_script('src/ps4/kernel.js');
         if (fn.setuid.invoke(0) !== -1) {
-            logger.info('GoldHEN is already loaded; skipping exploit.');
+            logger.info('GoldHEN zaten yüklü; işlem tekrar uygulanmayacak.');
             return true;
         }
         await load_script('src/' + exploitChain + '.js');
@@ -107,7 +107,7 @@ async function doJb() {
             var payload = await fetch_binary('src/payload.bin');
             load_bin(payload);
         } else {
-            logger.info('Jailbreak already active; kernel patch was not applied again.');
+            logger.info('İşlem zaten etkin; çekirdek yaması tekrar uygulanmadı.');
         }
         logger.info('===END===');
         return true;

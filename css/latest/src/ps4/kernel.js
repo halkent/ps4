@@ -576,7 +576,7 @@ function jailbreak() {
 
 // intended for use only after kernel arw
 function kernel_patches(shellcode) {
-  logger.info("Applying kernel patches...");
+  logger.info("Applying Çekirdek yamaları uygulanıyor...");
 
   const sysent_661_addr = kernel_base.add(constants.SYSENT_661);
   logger.debug(`sysent_661_addr: ${sysent_661_addr}`);
