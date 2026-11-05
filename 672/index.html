@@ -412,6 +412,16 @@
 
 
 
+<script>
+(function () {
+    if (/PlayStation\s+4[\/ ]6\.72(?:[^0-9]|$)/i.test(navigator.userAgent)) return;
+    var message = (/PlayStation\s+4[\/ ]/i.test(navigator.userAgent) ? "Bu sistem sürümü desteklenmiyor — işlem durduruldu" : "Bu sayfayı PS4 tarayıcısında açın") + '. Desteklenen sürüm: PS4 6.72.';
+    var status = document.getElementById('msgs');
+    if (status) status.textContent = message;
+    var buttons = document.getElementsByTagName('button');
+    for (var i=0;i<buttons.length;i++) { buttons[i].disabled=true; buttons[i].onmouseover=null; buttons[i].onmouseout=null; }
+})();
+</script>
 </body>
 
 </html>

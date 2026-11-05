@@ -320,7 +320,7 @@
         checkbox.disabled = true;
         jailbreakButton.disabled = true;
         label.textContent =
-            'Cihaz veya sistem sürümü desteklenmiyor';
+            (/PlayStation\s+4[\/ ]/i.test(navigator.userAgent) ? "Bu sistem sürümü desteklenmiyor — işlem durduruldu" : "Bu sayfayı PS4 tarayıcısında açın");
         appendOutput(
             '[-] Bu sayfa yalnızca PS4 6.00–11.02 sistem sürümlerini destekler.'
         );

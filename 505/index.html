@@ -209,11 +209,11 @@
         function run505Once() {
             if (host505Started) return;
             host505Started = true;
-            status505('Starting exploit...');
+            status505('İşlem başlatılıyor...');
             try {
                 exploit();
             } catch (error) {
-                status505('Startup failed. Reload the browser before retrying.');
+                status505('Başlatılamadı. Yeniden denemeden önce tarayıcıyı yenileyin.');
                 var menuMessage = document.getElementById('msgs');
                 if (menuMessage) {
                     menuMessage.textContent = error && error.message ?
@@ -224,14 +224,14 @@
 
         function start505Host() {
             if (!isSupported505()) {
-                status505('Cihaz veya sistem sürümü desteklenmiyor. PS4 5.05 is required.');
+                status505((/PlayStation\s+4[\/ ]/i.test(navigator.userAgent) ? "Bu sistem sürümü desteklenmiyor — işlem durduruldu" : "Bu sayfayı PS4 tarayıcısında açın") + ". Desteklenen sürüm: PS4 5.05.");
                 return;
             }
 
             var ac = window.applicationCache;
             var hasManifest = document.documentElement.hasAttribute('manifest');
             if (!ac || !hasManifest) {
-                status505('Offline Önbellek kullanılamıyor. Starting online mode...');
+                status505('Çevrimdışı önbellek kullanılamıyor. Çevrimiçi başlatılıyor...');
                 setTimeout(run505Once, 250);
                 return;
             }

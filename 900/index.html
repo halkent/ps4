@@ -172,7 +172,7 @@
         }
     </style>
     <script>
-        if (window.applicationCache.status == '0') {
+        if (window.applicationCache && window.applicationCache.status == '0') {
             window.location.replace("version-selector.html");
         }
     </script>
@@ -249,7 +249,7 @@
         if (UA == "layStation 4/99.99") UA = "99.99";
         var supportedFW = ["9.00", "9.03", "9.04", "9.50", "9.51", "9.60", "99.99"];
         window.ps4FirmwareSupported = supportedFW.indexOf(UA) !== -1;
-        if (!window.ps4FirmwareSupported) alert("This Is For PS4 FW 9.xx Only!");
+        if (!window.ps4FirmwareSupported) { var warning = (/PlayStation\s+4[\/ ]/i.test(navigator.userAgent) ? "Bu sistem sürümü desteklenmiyor — işlem durduruldu" : "Bu sayfayı PS4 tarayıcısında açın"); alert(warning); var notice=document.createElement('div'); notice.textContent=warning; notice.style.cssText='padding:20px;background:#12263a;color:#67d8ff;text-align:center;font:18px Arial'; document.body.insertBefore(notice,document.body.firstChild); }
         document.getElementById("PS4fw").innerHTML = "" + UA + "";
         // Statistics initialization
         if (localStorage.passcount == null || localStorage.passcount == undefined) localStorage.passcount = 0;

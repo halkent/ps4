@@ -202,13 +202,13 @@
     var forced = queryValue("bug");
     if (bug && (forced === "lapse" || forced === "poops")) bug = forced;
 
-    var why = !key ? "user-agent is not a PlayStation 4" :
-        bug ? key + " uses " + bug : key + " is not supported by this host";
+    var why = !key ? "PS4 tarayıcısı algılanamadı" :
+        bug ? key + " için yöntem: " + bug : key + " bu sayfada desteklenmiyor";
     detEl.innerHTML = "Sistem sürümü <b>" + (key || "algılanamadı") + "</b>"
         + " &middot; bug <b>" + (bug || "none") + "</b> &middot; " + why;
 
     if (!bug) {
-        setState("DESTEKLENMEYEN SİSTEM SÜRÜMÜ — işlem durduruldu", "bad");
+        setState((/PlayStation\s+4[\/ ]/i.test(navigator.userAgent) ? "Bu sistem sürümü desteklenmiyor — işlem durduruldu" : "Bu sayfayı PS4 tarayıcısında açın"), "bad");
         setCache("Desteklenen sürümler: 11.00, 11.50, 11.52, 12.00, 12.02, 12.50, 12.52 ve 13.00.");
         return;
     }

@@ -5,7 +5,7 @@ CACHE MANIFEST
 # v4 - startup, AppCache and telemetry reliability 20261003
 
 CACHE:
-index.html #f0a7b9f4247fc12feb4bec0b4c21c0c83ed4a85bb86fe7a216733cf2a8d1f7bd
+index.html #2f04530b46e35c34569348872e4efd415c2b68a46d3d64f7235b0554c1a647b8
 jb.html #97bd7eea339f307b06f1c62e657c5de6cde1f3014aec42c7b1c0c556cea75cb6
 cache.html #2de9f88dc596f92e444d9a4ee60d4019cb685395c09b1469de517266d11a50f9
 ../halkent.svg #03b1251eb737e4fda061b7c4f8f1210149f9cd7f7a9d1f0b80ba85f4101e04e6

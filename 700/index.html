@@ -256,7 +256,7 @@
         var supportedFW = ["7.00", "7.01", "7.02", "7.50", "7.51", "7.55", "8.00", "8.01", "8.03", "8.50", "8.52"];
         window.ps4FirmwareSupported = supportedFW.indexOf(UA) !== -1;
         if (!window.ps4FirmwareSupported)
-            alert("This Is For PS4 FW 7.xx - 8.xx Only!");
+            { var warning = (/PlayStation\s+4[\/ ]/i.test(navigator.userAgent) ? "Bu sistem sürümü desteklenmiyor — işlem durduruldu" : "Bu sayfayı PS4 tarayıcısında açın"); alert(warning); var notice=document.createElement('div'); notice.textContent=warning; notice.style.cssText='padding:20px;background:#12263a;color:#67d8ff;text-align:center;font:18px Arial'; document.body.insertBefore(notice,document.body.firstChild); }
         document.getElementById("PS4fw").innerHTML = "" + UA + "";
 
         // Statistics initialization
