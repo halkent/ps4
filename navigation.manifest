@@ -1,12 +1,13 @@
 CACHE MANIFEST
-# Halkent integration 2026-11-05
+# Halkent SEO 2026-11-06
 # version-label-audit-20261021-v3
 # navigation-v1-20261021: menu only; host caches install separately
 
 CACHE:
+search-info.css?v=1
 firmware-detect.js
-./ #231b9b17ff1aea3759caa9a223eebc2b3368f1b9870d9fce07ed29ed44a2ab20
-index.html #231b9b17ff1aea3759caa9a223eebc2b3368f1b9870d9fce07ed29ed44a2ab20
+./ #fb895a0472862c8d09a8c346d105c8c4fb0e3ed0442bb0137c1a496fa61e97f7
+index.html #fb895a0472862c8d09a8c346d105c8c4fb0e3ed0442bb0137c1a496fa61e97f7
 halkent.svg #03b1251eb737e4fda061b7c4f8f1210149f9cd7f7a9d1f0b80ba85f4101e04e6
 700/version-selector.html #b0fa0150dd90d99279e47c0aa2581421a4b988915e21e77b95338fbb272e3c23
 900/version-selector.html #e3849f6b7274b4e2052c22b5b158f686fb731ced9bf13a02117b704c90ea9d2f
