@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# Offline text wordmark 2026-11-10
+# Offline text wordmark 2026-11-10 refined-v2
 # Brand logo refresh 2026-11-07
 # Halkent integration 2026-11-05
 # resource-path-fix-20261021-main-v2
@@ -8,10 +8,10 @@ CACHE MANIFEST
 
 CACHE:
 alert.js #b8c9e8809c91070aec48f05968c12b04f7f4521e5468f0758858c950fb90a89b
-cache.html #ddbeeb378e87a79d621d0831db1020971459b63c8f5020614046b7cdcb657848
+cache.html #8240dd5dd55b5a3341b5a08f2d76161cee4c85eb97bbf70a4aff41e43b88de3a
 config.js #82d8319fbe5191d722ff299b23acd1c1338f6068c5e97a013f224fda29d6788c
 goldhen.bin #df3f27c1b35bc7c40e3a08caab948930914dc7d0301a73b68945cf6ffe40ea12
-index.html #0f9ce81616ebbc73aee465963994d845d495729f564f77d653e3f27d8ced1997
+index.html #45544f46d1cf89f402dc879874ec55db29d06ffafbae1f7a2c912102d3688c58
 lapse.js #b2d575018816313e5c7b6488c24b5a1537fb458a5ad2a933156868eb9cad72a4
 loader.js #46ae7a9338b0353def237dd8a637be9f15a53df56e5f4b55ac19e77ac851842b
 payloads.js #504da4178a450becc13e783337ffbf11d3f25693f71967d3d82f00ba02b9014f

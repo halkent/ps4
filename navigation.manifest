@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# Offline text wordmark 2026-11-10
+# Offline text wordmark 2026-11-10 refined-v2
 # Brand logo refresh 2026-11-07
 # Halkent sharing 2026-11-07
 # version-label-audit-20261021-v3
@@ -11,9 +11,9 @@ firmware-detect.js
 ./ #d6ea3e11210217bd88b302394f1ea076a7286d24ffa4343e08ac47145629c127
 index.html #d6ea3e11210217bd88b302394f1ea076a7286d24ffa4343e08ac47145629c127
 halkent.svg #03b1251eb737e4fda061b7c4f8f1210149f9cd7f7a9d1f0b80ba85f4101e04e6
-700/version-selector.html #dbc18b22e9b544956b007359538f05f9589ec473ea6e35e5380fe2ac4bfb769e
-900/version-selector.html #b666211d8be607ac0f483f5fdf46193cc9d7666f9e1c234290c9a2f92651dbdf
-css/version-selector.html #e417ef4f69b165c7b7f8646868cdd04df6896c793f1531b6deda60ebc35ede78
+700/version-selector.html #beb97041594d4f837c39c5a151645e51ad69269aa0fd7de69be556e7fd9e0815
+900/version-selector.html #1bfde5d480ca173c8b4fa98c990da27ce3a61c9e2ce0eeab845b3683cd204f55
+css/version-selector.html #735be470a96395a14bc42c76007fc0be79d94a1c2c5e855d37ff7fedc43ac72f
 
 NETWORK:
 *
