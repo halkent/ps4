@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# Offline text wordmark 2026-11-10 refined-v2
+# Offline text wordmark 2026-11-10 aligned-v3
 # Brand logo refresh 2026-11-07
 # Halkent integration 2026-11-05
 # resource-path-fix-20261021-main-v2
@@ -10,7 +10,7 @@ CACHE MANIFEST
 CACHE:
 goldhen10.bin #c6329401d1810e16c84e6474ac30977dbdc951987c10cdb559370de7d59db0b0
 # Core files
-index.html #a000618e5563849849af34e4fb7707a97553440a050ec3c113b5e2cba4164c05
+index.html #0fd69796354c6f7e8a195f0f0b015513a0754fbec97928b53ea1250bfc0cd06e
 exploit.js #6d4dd7e4353f7bbb6a052609044d92fb5cbf9271ea7a7f123ecf5138e0be3e4d
 ../halkent.svg #03b1251eb737e4fda061b7c4f8f1210149f9cd7f7a9d1f0b80ba85f4101e04e6
 

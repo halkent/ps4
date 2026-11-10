@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# Offline text wordmark 2026-11-10 refined-v2
+# Offline text wordmark 2026-11-10 aligned-v3
 # Halkent integration 2026-11-05
 # version-label-audit-20261021-v3
 # resource-path-fix-20261021-main-v2
@@ -8,7 +8,7 @@ CACHE MANIFEST
 
 CACHE:
 goldhen10.bin #c6329401d1810e16c84e6474ac30977dbdc951987c10cdb559370de7d59db0b0
-index5.html #be872f5eef52329b7e8d3d231a5db3a5b0fe5a5e293be66d819e99e9be121ee6
+index5.html #b9f38a8fb127d05ca94a3b98bdcc712ba20ac3cac0ba1e9070efd95cd9e05b7a
 alert5.mjs #e30dc6a2504f69705145fa4d3de4e7637c32f14714a5d908c34bb9ad7da23427
 config.mjs #82d8319fbe5191d722ff299b23acd1c1338f6068c5e97a013f224fda29d6788c
 psfree5.mjs #8e629cbeefac092673d101713db619cf222f4d408932b5ef711f4c4094bc238d
@@ -53,7 +53,7 @@ payloads/rif-renamer.bin #d1e7c73f38f0ad272aa64ba111cd529072299a90243be2fdabc45d
 payloads/WebRTE_900.bin #0279afca13ba935d710e4a78919eaf64a6c5227c7017d58e807693597f7f0796
 
 ../halkent.svg #03b1251eb737e4fda061b7c4f8f1210149f9cd7f7a9d1f0b80ba85f4101e04e6
-cache5.html #6616794b491838ec1adb14d44b86b28f05c7ddabe616cc9f034de0e8217ed261
+cache5.html #bc7ad5551228f0567c1de3bc304d885c20bd69b2eb67013f9b9a2be21d2bbde0
 
 NETWORK:
 *

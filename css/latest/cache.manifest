@@ -1,10 +1,10 @@
 CACHE MANIFEST
-# Offline text wordmark 2026-11-10 refined-v2
+# Offline text wordmark 2026-11-10 aligned-v3
 # Brand logo refresh 2026-11-07
 # Halkent integration 2026-11-05
 # generated; do not edit by hand
 includes/script.js #eb6a47e506ae64ab70dd120cb29c7fe73682044463a07d0cbf5aa29694762fa3
-index.html #2ee13009856cfb79a6835558aaa29b0716455c8a94084c7084abd4d4a32c428e
+index.html #9beaa113c6bf95d579b655435e8a8f171576aefa7470a02a8233fdb848b21632
 src/lapse.js #5ce41c0f91da7fbf76711a514ab46d391ff2e9ab0e653aa0929e140a9159a967
 src/loader.js #6f104e6241c0857ff9cba7b2c299ef443e95039bf5b534dd17308db6dfe78afe
 src/main.js #bf94bca689e9da7239c831cc0bd9c3f2fc70ccaa2e0cd12b962893d777d0bfb8
