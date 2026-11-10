@@ -1,4 +1,5 @@
 CACHE MANIFEST
+# Offline text wordmark 2026-11-10
 # Brand logo refresh 2026-11-07
 # Halkent integration 2026-11-05
 # resource-path-fix-20261021-main-v2
@@ -6,9 +7,9 @@ CACHE MANIFEST
 # v4 - startup, AppCache and telemetry reliability 20261003
 
 CACHE:
-index.html #24f8db4593aa19737b843adf5ebe6f1420cf97e0b65a0a9a99d114f4e4749ea1
-jb.html #7bda9e850c3cb0692bcacb87e0bfaa0777b83ef50d2d2cb93588aa4742415f5a
-cache.html #e9f8e7e4f50c476739577f3174dd6d034901e0ae634a64f62710e606d9e06530
+index.html #b098f833ae92d3ce812a952c93d842bc79f031e4ed6bab5627c4483f239a01ba
+jb.html #89c0a7af61d13e51136386786bb9b06809de9c6655971c8fd47834771cf5bc75
+cache.html #07dc1152caeff508b217815e2cd3645ed59670c60f4bd2ed8d0efdd6fa845035
 ../halkent.svg #03b1251eb737e4fda061b7c4f8f1210149f9cd7f7a9d1f0b80ba85f4101e04e6
 jb.js #2f35227aca1cf4b8804c1f6a5c604f6279eddfdb280440d25d7cac7c6f13cc02
 core.js #853e6fc43ea8da93b353653ac4aea77d08fb25ae47af1fa4dc06414d26ef1118
@@ -21,7 +22,7 @@ patches/1302.bin #235a051f5a066daa546253de6eb61c1223a2682cb34edd916fc4565bb2c02f
 patches/1350.bin #f771c196d012496c01f575674e95a74d7b00b7c1bc22325c7321f3ab6eb77b56
 patches/1352.bin #adfb9771904f71cd1f5a82cbded8ac46c7ffeb3df974579535cf711904ac347e
 
-jb.html?log=1 #7bda9e850c3cb0692bcacb87e0bfaa0777b83ef50d2d2cb93588aa4742415f5a
+jb.html?log=1 #89c0a7af61d13e51136386786bb9b06809de9c6655971c8fd47834771cf5bc75
 
 NETWORK:
 *

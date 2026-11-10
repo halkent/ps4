@@ -1,11 +1,12 @@
 CACHE MANIFEST
+# Offline text wordmark 2026-11-10
 # Halkent integration 2026-11-05
 # resource-path-fix-20261021-main-v2
 # offline-manifests-v1-20261021
 # v10 - goldhen b18.12 cache-error-guard dom-error-target-fix support-link-20261003
 
 CACHE:
-index.html #9bdef5c158996b2a0d5538229ccbe84c0b35c5264256bf3cd9a4079680210fd6
+index.html #8588e1237fabe7f625eee263124dbf775d45b210b2edf0870214e5e6a3935075
 alert.mjs #5c22884502bee9ed2ea57f6519e21205a552e24e2b48df7217ed90599ba0f9fc
 config.mjs #82d8319fbe5191d722ff299b23acd1c1338f6068c5e97a013f224fda29d6788c
 psfree.mjs #e61bcb4789471a0df25e84d70029c81b829e6193702eb58a984a0514702d53e8
@@ -51,7 +52,7 @@ payloads/rif-renamer.bin #d1e7c73f38f0ad272aa64ba111cd529072299a90243be2fdabc45d
 payloads/WebRTE_900.bin #0279afca13ba935d710e4a78919eaf64a6c5227c7017d58e807693597f7f0796
 
 ../halkent.svg #03b1251eb737e4fda061b7c4f8f1210149f9cd7f7a9d1f0b80ba85f4101e04e6
-cache.html #2c89069fb7adf18ef687fa4b31ce4d02520892811f47771a0a1806313828f5c3
+cache.html #75baddc4edb3973f482f0b832f2544dac996f5f21491b5e7eab02e348805cd88
 
 NETWORK:
 *

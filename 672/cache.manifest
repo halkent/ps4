@@ -1,4 +1,5 @@
 CACHE MANIFEST
+# Offline text wordmark 2026-11-10
 # Brand logo refresh 2026-11-07
 # Halkent integration 2026-11-05
 # resource-path-fix-20261021-main-v2
@@ -7,7 +8,7 @@ CACHE MANIFEST
 
 CACHE:
 goldhen10.bin #c6329401d1810e16c84e6474ac30977dbdc951987c10cdb559370de7d59db0b0
-index.html #827abf9770e3a4d2914297b604349d12efd2c3b7cb76e6e933f98f67e8130652
+index.html #57760eaa38d5be3fbd0fa098582331c675d16ba49eec741fdb9701dce153684c
 pl_loader.js #f6b084fb8bf31a0e51fae36ceafd39ae8467c2e105027c9ebcdec350b2b96205
 goldhen.bin #df3f27c1b35bc7c40e3a08caab948930914dc7d0301a73b68945cf6ffe40ea12
 ftp.bin #2b5913092a8fc00b18d5c7b15660d08dc27eccff1f26293a3273d4856860238c

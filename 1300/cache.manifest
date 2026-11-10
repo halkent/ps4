@@ -1,4 +1,5 @@
 CACHE MANIFEST
+# Offline text wordmark 2026-11-10
 # Brand logo refresh 2026-11-07
 # Halkent integration 2026-11-05
 # resource-path-fix-20261021-main-v2
@@ -6,9 +7,9 @@ CACHE MANIFEST
 # v16 - add 11.52 lapse routing 20261022
 
 CACHE:
-index.html #7f3be94f5f048922db17c620bd74165ebd0382e5a02cd2e9b6b3fd7432d8786e
-run_lapse.html #f44bf8d01e80a5a059f6cc3ebbdecd49668b2f74b31fac1ba8a50e991cfc3be5
-run_poops.html #4056d0cb49a88627a14ad4eccbe22808e0c1eb00b21d06e50ae14153a2c177ce
+index.html #19ab4268d0c3bcdf02eae82248935767dfd3cbb3092f591351d26df36bd4efb0
+run_lapse.html #a2e4b94e21c6c9f852ce6dd50b2d423940ad76670ece3e05966be74a9d19c0b6
+run_poops.html #6c75426c0cd82c967942668fb0d5bb750197e374b37d5ca11ae8a66c6c11876b
 ../halkent.svg #03b1251eb737e4fda061b7c4f8f1210149f9cd7f7a9d1f0b80ba85f4101e04e6
 chain_lapse.js #614c4a946a2eaa0094ae049d11b028519a5e8dcfb2633a2897b9604ed009ba0f
 chain_poops.js #8bab5cbd498c16af2580da3d6748af5806a89c371c35f80d5e120c6c05555c90
