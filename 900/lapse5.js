@@ -145,16 +145,16 @@ function toogle_payload(PLfile) {
       var pthread = malloc(0x10);
       call_nze('pthread_create', pthread, 0, loader_addr, payload_buffer);
       localStorage.passcount = ++localStorage.passcount;
-      if (window.passCounter) window.passCounter.innerHTML = localStorage.passcount;
+      if (window.passCounter) window.passCounter.innerHTML = window.hkT(localStorage.passcount);
      } else {
       console.error('Yüklenemedi: payload:', PLfile);
       localStorage.failcount = ++localStorage.failcount;
-      if (window.failCounter) window.failCounter.innerHTML = localStorage.failcount;
+      if (window.failCounter) window.failCounter.innerHTML = window.hkT(localStorage.failcount);
      }
     } catch (e) {
      console.error('Error processing payload:', e);
      localStorage.failcount = ++localStorage.failcount;
-     if (window.failCounter) window.failCounter.innerHTML = localStorage.failcount;
+     if (window.failCounter) window.failCounter.innerHTML = window.hkT(localStorage.failcount);
     }
    }
   };
@@ -162,7 +162,7 @@ function toogle_payload(PLfile) {
  } catch (e) {
   console.error('Error in toogle_payload:', e);
   localStorage.failcount = ++localStorage.failcount;
-  if (window.failCounter) window.failCounter.innerHTML = localStorage.failcount;
+  if (window.failCounter) window.failCounter.innerHTML = window.hkT(localStorage.failcount);
  }
 }
 
@@ -1090,7 +1090,7 @@ function make_aliased_pktopts(sds) {
         }
     }
     localStorage.failcount = ++localStorage.failcount;
-    if (window.failCounter) window.failCounter.innerHTML = localStorage.failcount;
+    if (window.failCounter) window.failCounter.innerHTML = window.hkT(localStorage.failcount);
     die('failed to make aliased pktopts');
 }
 
@@ -1760,7 +1760,7 @@ export async function kexploit() {
     } catch (e) {
         console.error('Failed to initialize:', e);
         localStorage.failcount = ++localStorage.failcount;
-        if (window.failCounter) window.failCounter.innerHTML = localStorage.failcount;
+        if (window.failCounter) window.failCounter.innerHTML = window.hkT(localStorage.failcount);
         return false;
     }
     
@@ -1838,7 +1838,7 @@ export async function kexploit() {
     } catch (exploitError) {
         console.error('Exploit failed:', exploitError);
         localStorage.failcount = ++localStorage.failcount;
-        if (window.failCounter) window.failCounter.innerHTML = localStorage.failcount;
+        if (window.failCounter) window.failCounter.innerHTML = window.hkT(localStorage.failcount);
         
         try {
             close(unblock_fd);
@@ -1898,7 +1898,7 @@ export async function kexploit() {
     try {
         if (sysi("setuid", 0) == 0) {
             localStorage.passcount = ++localStorage.passcount;
-            if (window.passCounter) window.passCounter.innerHTML = localStorage.passcount;
+            if (window.passCounter) window.passCounter.innerHTML = window.hkT(localStorage.passcount);
             return true;
         }
     } catch (e) {
@@ -1907,7 +1907,7 @@ export async function kexploit() {
     }
 
     localStorage.failcount = ++localStorage.failcount;
-    if (window.failCounter) window.failCounter.innerHTML = localStorage.failcount;
+    if (window.failCounter) window.failCounter.innerHTML = window.hkT(localStorage.failcount);
     return false;    
 }
 // Auto-start removed - kexploit is called from psfree5.js main() function

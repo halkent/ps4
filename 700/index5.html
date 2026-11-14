@@ -3,7 +3,7 @@
 
 <head>
     
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"><script>window.hkT=function(value){return value;};</script><link rel="stylesheet" href="../i18n/menu.css"><script src="../i18n/menu.js" data-root="../i18n/"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HALKENT // PS4 7.00-8.52 HOST / 2.4B18.10</title>
     <style>
@@ -263,8 +263,8 @@ body{background-color:#080f20!important;background-image:radial-gradient(ellipse
         var supportedFW = ["7.00", "7.01", "7.02", "7.50", "7.51", "7.55", "8.00", "8.01", "8.03", "8.50", "8.52"];
         window.ps4FirmwareSupported = supportedFW.indexOf(UA) !== -1;
         if (!window.ps4FirmwareSupported)
-            { var warning = (/PlayStation\s+4[\/ ]/i.test(navigator.userAgent) ? "Bu sistem sürümü desteklenmiyor — işlem durduruldu" : "Bu sayfayı PS4 tarayıcısında açın"); alert(warning); var notice=document.createElement('div'); notice.textContent=warning; notice.style.cssText='padding:20px;background:#12263a;color:#67d8ff;text-align:center;font:18px Arial'; document.body.insertBefore(notice,document.body.firstChild); }
-        document.getElementById("PS4fw").innerHTML = "" + UA + "";
+            { var warning = (/PlayStation\s+4[\/ ]/i.test(navigator.userAgent) ? "Bu sistem sürümü desteklenmiyor — işlem durduruldu" : "Bu sayfayı PS4 tarayıcısında açın"); alert(warning); var notice=document.createElement('div'); notice.textContent=window.hkT(warning); notice.style.cssText='padding:20px;background:#12263a;color:#67d8ff;text-align:center;font:18px Arial'; document.body.insertBefore(notice,document.body.firstChild); }
+        document.getElementById("PS4fw").innerHTML = window.hkT("" + UA + "");
 
         // Statistics initialization
         if (localStorage.passcount == null || localStorage.passcount == undefined) localStorage.passcount = 0;
@@ -272,10 +272,10 @@ body{background-color:#080f20!important;background-image:radial-gradient(ellipse
 
         // Update counters on page load
         if (document.getElementById("passCounter")) {
-            document.getElementById("passCounter").innerHTML = localStorage.passcount;
+            document.getElementById("passCounter").innerHTML = window.hkT(localStorage.passcount);
         }
         if (document.getElementById("failCounter")) {
-            document.getElementById("failCounter").innerHTML = localStorage.failcount;
+            document.getElementById("failCounter").innerHTML = window.hkT(localStorage.failcount);
         }
     </script>
 

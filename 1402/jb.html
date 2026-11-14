@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="tr" manifest="cache.appcache">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8" /><script>window.hkT=function(value){return value;};</script><link rel="stylesheet" href="../i18n/menu.css"><script src="../i18n/menu.js" data-root="../i18n/"></script>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>PS4 14.02 · Halkent</title>
     <!-- This page carries its own styles and starts its own module, and it
@@ -195,7 +195,7 @@
     <script>
 var match=/PlayStation\s+4[\/ ;]+(\d+\.\d{2})(?!\d)/i.exec(navigator.userAgent||'');
 if(match && match[1]==='14.02'){var script=document.createElement('script');script.type='module';script.src='./jb.js';document.body.appendChild(script);}
-else{document.body.className='fail';document.getElementById('msg').textContent='Bu işlem yalnızca PS4 14.02 tarayıcısında çalışır.';}
+else{document.body.className='fail';document.getElementById('msg').textContent=window.hkT('Bu işlem yalnızca PS4 14.02 tarayıcısında çalışır.');}
 </script>
   </body>
 </html>

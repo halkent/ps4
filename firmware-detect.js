@@ -6,9 +6,9 @@
     var ua = navigator.userAgent || '';
     var match = /PlayStation\s+4[\/ ;]+(\d+)\.(\d{2})(?!\d)/i.exec(ua);
     if (!match) {
-        status.textContent = /PlayStation\s+4/i.test(ua)
+        status.textContent = window.hkT(/PlayStation\s+4/i.test(ua)
             ? 'Sistem sürümü okunamadı. Sürümünü aşağıdan seçebilirsin.'
-            : 'Otomatik sürüm algılama için bu sayfayı PS4 tarayıcısında aç.';
+            : 'Otomatik sürüm algılama için bu sayfayı PS4 tarayıcısında aç.');
         return;
     }
     var version = parseInt(match[1], 10) + '.' + match[2];
@@ -28,10 +28,10 @@
     add('14.02', './1402/');
     var target = routes[version];
     if (!target) {
-        status.textContent = 'PS4 ' + version + ' algılandı. Bu sürüm için uygun bir sayfa bulunmuyor.';
+        status.textContent = window.hkT('PS4 ' + version + ' algılandı. Bu sürüm için uygun bir sayfa bulunmuyor.');
         return;
     }
-    status.textContent = 'PS4 ' + version + ' algılandı. Uygun kart senin için işaretlendi.';
+    status.textContent = window.hkT('PS4 ' + version + ' algılandı. Uygun kart senin için işaretlendi.');
     shortcut.href = target;
     shortcut.style.display = 'inline-block';
     var cards = document.querySelectorAll('.card,.route');
@@ -41,7 +41,7 @@
             cards[j].setAttribute('aria-label', 'PS4 ' + version + ' için önerilen sayfayı aç');
             var badge = document.createElement('span');
             badge.className = 'recommended-badge';
-            badge.textContent = 'SÜRÜMÜNE UYGUN';
+            badge.textContent = window.hkT('SÜRÜMÜNE UYGUN');
             cards[j].appendChild(badge);
             break;
         }

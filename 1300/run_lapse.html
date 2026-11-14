@@ -2,7 +2,7 @@
 <html lang="tr" manifest="cache.manifest">
 <head>
     
-<meta charset="utf-8">
+<meta charset="utf-8"><script>window.hkT=function(value){return value;};</script><link rel="stylesheet" href="../i18n/menu.css"><script src="../i18n/menu.js" data-root="../i18n/"></script>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>HALKENT // 11.00-13.00 LAPSE</title>
 <style>
@@ -149,7 +149,7 @@ body{background-color:#080f20!important;background-image:radial-gradient(ellipse
             clearInterval(monitor);
             var rec = spendBudget();
             if (!rec || rec.n > MAX) return;
-            st.textContent = "Bellek düzeni uygun değil — yeniden hazırlanıyor (" + rec.n + "/2)...";
+            st.textContent = window.hkT("Bellek düzeni uygun değil — yeniden hazırlanıyor (" + rec.n + "/2)...");
             st.className = "warn";
             setTimeout(function () { location.reload(); }, 2000);
         } catch (e) { /* never break the exploit page */ }

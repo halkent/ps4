@@ -19,7 +19,7 @@ function showNotice(text) {
   try {
     const box = document.createElement("div");
     box.className = "notice";
-    box.textContent = text;
+    box.textContent = window.hkT(text);
     (document.getElementById("out") || document.body).appendChild(box);
     document.body.classList.add("fail");
   } catch (e) {}
@@ -91,8 +91,8 @@ const SENT_HOME = (function () {
     const msgEl = document.getElementById("msg");
     if (msgEl) {
       msgEl.textContent =
-        "Tarayıcı önceki oturumu açtı. İşlem başlatılmadı — " +
-        "başlangıç sayfasına dönülüyor.";
+        window.hkT("Tarayıcı önceki oturumu açtı. İşlem başlatılmadı — " +
+        "başlangıç sayfasına dönülüyor.");
     }
   } catch (e) {}
   /* replace(), not assign(): the refused page must not stay in the history,
@@ -242,11 +242,11 @@ function finishUI(ok, ran) {
   if (SHOW_LOG || !document.body) return;
   const m = document.getElementById("msg");
   if (m)
-    m.textContent = ok
+    m.textContent = window.hkT(ok
       ? "İşlem tamamlandı"
       : ran
         ? "Konsolu yeniden başlatın"
-        : "Sayfayı yenileyip tekrar deneyin";
+        : "Sayfayı yenileyip tekrar deneyin");
   document.body.className = ok ? "done" : "fail";
 }
 function mark(tag, detail) {
@@ -285,7 +285,7 @@ function trace(tag, detail) {
 }
 function state(t, c) {
   if (!SHOW_LOG || !stateEl) return;
-  stateEl.textContent = t;
+  stateEl.textContent = window.hkT(t);
   stateEl.className = c || "";
 }
 function check(name, ok, detail) {

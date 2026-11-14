@@ -3,7 +3,7 @@
 
 <head>
     
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"><script>window.hkT=function(value){return value;};</script><link rel="stylesheet" href="../i18n/menu.css"><script src="../i18n/menu.js" data-root="../i18n/"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HALKENT // PS4 5.05 HOST</title>
     <style>
@@ -204,7 +204,7 @@ body{background-color:#080f20!important;background-image:radial-gradient(ellipse
 
         function status505(message) {
             var element = document.getElementById('msgs2');
-            if (element) element.textContent = message;
+            if (element) element.textContent = window.hkT(message);
         }
 
         function isSupported505() {
@@ -223,8 +223,8 @@ body{background-color:#080f20!important;background-image:radial-gradient(ellipse
                 status505('Başlatılamadı. Yeniden denemeden önce tarayıcıyı yenileyin.');
                 var menuMessage = document.getElementById('msgs');
                 if (menuMessage) {
-                    menuMessage.textContent = error && error.message ?
-                        error.message : String(error);
+                    menuMessage.textContent = window.hkT(error && error.message ?
+                        error.message : String(error));
                 }
             }
         }
@@ -443,7 +443,7 @@ body{background-color:#080f20!important;background-image:radial-gradient(ellipse
         }
 
         function allset() {
-            msgs.innerHTML = LoadedMSG;
+            msgs.innerHTML = window.hkT(LoadedMSG);
         }
 
         var payloadBusy = false;
@@ -469,7 +469,7 @@ body{background-color:#080f20!important;background-image:radial-gradient(ellipse
 
         function payloadError(message) {
             payloadBusy = false;
-            msgs.textContent = message;
+            msgs.textContent = window.hkT(message);
         }
 
         function load_payload() {
@@ -538,98 +538,98 @@ body{background-color:#080f20!important;background-image:radial-gradient(ellipse
         }
 
         function load_goldhen18() {
-            msgs.innerHTML = "GoldHEN v2.4b18.12 yükleniyor... Lütfen bekleyin";
+            msgs.innerHTML = window.hkT("GoldHEN v2.4b18.12 yükleniyor... Lütfen bekleyin");
             LoadedMSG = "GoldHEN v2.4b18.12 yüklendi ✔";
             PLfile = "goldhen.bin";
             load_payload();
         }
 
         function load_goldhen5() {
-            msgs.innerHTML = "GoldHEN v2.4b18.10 yükleniyor... Lütfen bekleyin";
+            msgs.innerHTML = window.hkT("GoldHEN v2.4b18.10 yükleniyor... Lütfen bekleyin");
             LoadedMSG = "GoldHEN v2.4b18.10 yüklendi ✔";
             PLfile = "goldhen10.bin";
             load_payload();
         }
 
         function load_ftp() {
-            msgs.innerHTML = "FTP Server yükleniyor... Lütfen bekleyin";
+            msgs.innerHTML = window.hkT("FTP Server yükleniyor... Lütfen bekleyin");
             LoadedMSG = "FTP Server yüklendi ✔";
             PLfile = "ftp.bin";
             load_payload();
         }
 
         function load_ps4debug() {
-            msgs.innerHTML = "PS4Debug yükleniyor... Lütfen bekleyin";
+            msgs.innerHTML = window.hkT("PS4Debug yükleniyor... Lütfen bekleyin");
             LoadedMSG = "PS4Debug yüklendi ✔";
             PLfile = "ps4debug.bin";
             load_payload();
         }
 
         function load_app2usb() {
-            msgs.innerHTML = "App2USB yükleniyor... Lütfen bekleyin";
+            msgs.innerHTML = window.hkT("App2USB yükleniyor... Lütfen bekleyin");
             LoadedMSG = "App2USB yüklendi ✔";
             PLfile = "app2usb.bin";
             load_payload();
         }
 
         function load_backup() {
-            msgs.innerHTML = "Yedekleme aracı yükleniyor... Lütfen bekleyin";
+            msgs.innerHTML = window.hkT("Yedekleme aracı yükleniyor... Lütfen bekleyin");
             LoadedMSG = "Backup yüklendi ✔";
             PLfile = "backup.bin";
             load_payload();
         }
 
         function load_restore() {
-            msgs.innerHTML = "Geri yükleme aracı yükleniyor... Lütfen bekleyin";
+            msgs.innerHTML = window.hkT("Geri yükleme aracı yükleniyor... Lütfen bekleyin");
             LoadedMSG = "Restore yüklendi ✔";
             PLfile = "restore.bin";
             load_payload();
         }
 
         function load_disableUpdates() {
-            msgs.innerHTML = "Güncelleme engelleme aracı yükleniyor... Lütfen bekleyin";
+            msgs.innerHTML = window.hkT("Güncelleme engelleme aracı yükleniyor... Lütfen bekleyin");
             LoadedMSG = "Disable Updates yüklendi ✔";
             PLfile = "disable-updates.bin";
             load_payload();
         }
 
         function load_enableUpdates() {
-            msgs.innerHTML = "Güncellemeleri açma aracı yükleniyor... Lütfen bekleyin";
+            msgs.innerHTML = window.hkT("Güncellemeleri açma aracı yükleniyor... Lütfen bekleyin");
             LoadedMSG = "Enable Updates yüklendi ✔";
             PLfile = "enable-updates.bin";
             load_payload();
         }
 
         function load_rifRenamer() {
-            msgs.innerHTML = "RIF Renamer yükleniyor... Lütfen bekleyin";
+            msgs.innerHTML = window.hkT("RIF Renamer yükleniyor... Lütfen bekleyin");
             LoadedMSG = "RIF Renamer yüklendi ✔";
             PLfile = "rif-renamer.bin";
             load_payload();
         }
 
         function load_kernelClock() {
-            msgs.innerHTML = "Kernel Clock yükleniyor... Lütfen bekleyin";
+            msgs.innerHTML = window.hkT("Kernel Clock yükleniyor... Lütfen bekleyin");
             LoadedMSG = "Kernel Clock yüklendi ✔";
             PLfile = "Kernel-Clock.bin";
             load_payload();
         }
 
         function load_appcacheInstall() {
-            msgs.innerHTML = "Önbellek kurulum aracı yükleniyor... Lütfen bekleyin";
+            msgs.innerHTML = window.hkT("Önbellek kurulum aracı yükleniyor... Lütfen bekleyin");
             LoadedMSG = "AppCache Install yüklendi ✔";
             PLfile = "appcache-install.bin";
             load_payload();
         }
 
         function load_historyBlocker() {
-            msgs.innerHTML = "Geçmiş engelleme aracı yükleniyor... Lütfen bekleyin";
+            msgs.innerHTML = window.hkT("Geçmiş engelleme aracı yükleniyor... Lütfen bekleyin");
             LoadedMSG = "History Blocker yüklendi ✔";
             PLfile = "history-blocker.bin";
             load_payload();
         }
 
         function load_pupDecrypt() {
-            msgs.innerHTML = "PUP Decrypt yükleniyor... Lütfen bekleyin";
+            msgs.innerHTML = window.hkT("PUP Decrypt yükleniyor... Lütfen bekleyin");
             LoadedMSG = "PUP Decrypt yüklendi ✔";
             PLfile = "pup-decrypt.bin";
             load_payload();

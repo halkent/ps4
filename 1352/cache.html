@@ -2,7 +2,7 @@
 <html lang="tr" manifest="cache.manifest">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"><script>window.hkT=function(value){return value;};</script><link rel="stylesheet" href="../i18n/menu.css"><script src="../i18n/menu.js" data-root="../i18n/"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HALKENT // PS4 13.02-13.52 HOST / CACHE</title>
     
@@ -145,7 +145,7 @@ body{background-color:#080f20!important;background-image:radial-gradient(ellipse
         catch (error) {}
     }
     function show(message) {
-        if (progress) progress.textContent = message;
+        if (progress) progress.textContent = window.hkT(message);
     }
     function returnToHost(delay) {
         if (redirected) return;
@@ -167,7 +167,7 @@ body{background-color:#080f20!important;background-image:radial-gradient(ellipse
         if (!event || !(event.total > 0)) return;
         var percent = Math.round(100 * event.loaded / event.total);
         if (bar) bar.style.width = percent + "%";
-        if (progressText) progressText.textContent = percent + "%";
+        if (progressText) progressText.textContent = window.hkT(percent + "%");
     }, false);
     cache.addEventListener("cached", function () {
         show("Page cached successfully.");

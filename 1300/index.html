@@ -2,7 +2,7 @@
 <html lang="tr" manifest="cache.manifest">
 <head>
     
-<meta charset="utf-8">
+<meta charset="utf-8"><script>window.hkT=function(value){return value;};</script><link rel="stylesheet" href="../i18n/menu.css"><script src="../i18n/menu.js" data-root="../i18n/"></script>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>HALKENT // PS4 11.00-13.00 HOST / 2.4B18.12</title>
 <style>
@@ -162,11 +162,11 @@ body{background-color:#080f20!important;background-image:radial-gradient(ellipse
     var cacheWatchdog = null;
 
     function setState(text, cssClass) {
-        stateEl.textContent = text;
+        stateEl.textContent = window.hkT(text);
         stateEl.className = cssClass || "";
     }
     function setCache(text, ok) {
-        cacheEl.textContent = text;
+        cacheEl.textContent = window.hkT(text);
         cacheEl.className = ok ? "cacheok" : "";
     }
     function queryValue(name) {
@@ -211,8 +211,8 @@ body{background-color:#080f20!important;background-image:radial-gradient(ellipse
 
     var why = !key ? "PS4 tarayıcısı algılanamadı" :
         bug ? key + " için yöntem: " + bug : key + " bu sayfada desteklenmiyor";
-    detEl.innerHTML = "Sistem sürümü <b>" + (key || "algılanamadı") + "</b>"
-        + " &middot; bug <b>" + (bug || "none") + "</b> &middot; " + why;
+    detEl.innerHTML = window.hkT("Sistem sürümü <b>" + (key || "algılanamadı") + "</b>"
+        + " &middot; bug <b>" + (bug || "none") + "</b> &middot; " + why);
 
     if (!bug) {
         setState((/PlayStation\s+4[\/ ]/i.test(navigator.userAgent) ? "Bu sistem sürümü desteklenmiyor — işlem durduruldu" : "Bu sayfayı PS4 tarayıcısında açın"), "bad");

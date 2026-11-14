@@ -39,7 +39,7 @@ function sendPayload(url, data, onLoadEndCallback) {
 
 function setPayloadStatus(message) {
     var status = document.getElementById('msgs2');
-    if (status) status.innerHTML = message;
+    if (status) status.innerHTML = window.hkT(message);
 }
 
 function finishPayloadRequest() {

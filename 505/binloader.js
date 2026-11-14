@@ -795,7 +795,7 @@ var exploit = function() {
    }
    p.fcall(createThread, shellbuf, 0, p.stringify(name));
    alert("Yük dosyası bekleniyor... PS4 IP adresine, 9020 bağlantı noktasından gönderin.");
-   msgs2.innerHTML="<h1 style='font-size:30px;'>BinLoader başlatıldı ✔</h1>";
+   msgs2.innerHTML=window.hkT("<h1 style='font-size:30px;'>BinLoader başlatıldı ✔</h1>");
 };
 window.onload = function() {
    setTimeout(exploit, 1000);

@@ -63,7 +63,7 @@ function mark(tag, detail) {
 }
 
 function trace(tag, detail) { if (VERBOSE) mark(tag, detail); else post(tag, detail); }
-function state(t, c) { stateEl.textContent = t; stateEl.className = c || ""; }
+function state(t, c) { stateEl.textContent = window.hkT(t); stateEl.className = c || ""; }
 function check(name, ok, detail) {
     if (ok) { passCount++; mark("PROOF-OK", name + (detail ? "  " + detail : "")); }
     else { failCount++; mark("PROOF-FAIL", name + (detail ? "  " + detail : "")); }

@@ -57,11 +57,11 @@ function finishUI(ok) {
   if (SHOW_LOG || !document.body) return;
   const m = document.getElementById("msg");
   if (m)
-    m.textContent = ok
+    m.textContent = window.hkT(ok
       ? "İşlem tamamlandı"
       : armedEver
         ? "Konsolu yeniden başlatın"
-        : "Sayfayı yenileyip yeniden deneyin";
+        : "Sayfayı yenileyip yeniden deneyin");
   document.body.className = ok ? "done" : "fail";
 }
 function mark(tag, detail) {
@@ -97,7 +97,7 @@ function trace(tag, detail) {
 }
 function state(t, c) {
   if (!SHOW_LOG || !stateEl) return;
-  stateEl.textContent = t;
+  stateEl.textContent = window.hkT(t);
   stateEl.className = c || "";
 }
 function check(name, ok, detail) {

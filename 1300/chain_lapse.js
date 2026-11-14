@@ -58,7 +58,7 @@ function mark(tag, detail) {
     outEl.scrollTop = outEl.scrollHeight;
     post(tag, detail);
 }
-function state(t, c) { stateEl.textContent = t; stateEl.className = c || ""; }
+function state(t, c) { stateEl.textContent = window.hkT(t); stateEl.className = c || ""; }
 
 let passCount = 0, failCount = 0;
 function check(name, ok, detail) {
@@ -3806,7 +3806,7 @@ function makeRpc(worker) {
             mark("REBOOT-REQUIRED", (committed2 ? "TWO aliased pairs are live (0x80 rthdr " + "and 0x100 pktopts). " : "") + "do not keep browsing and do not close the "
                 + "browser normally. power the console off and back on.");
             try {
-                stateEl.textContent = "REBOOT THE CONSOLE";
+                stateEl.textContent = window.hkT("REBOOT THE CONSOLE");
                 stateEl.className = "bad";
             } catch (e) { }
         } else if (repaired && cleanupDone) {
@@ -3823,11 +3823,11 @@ function makeRpc(worker) {
                   + "torn down" + (jailbroken ? ", and the process is root"
                     : "") + ". See the stage 8/9/10 marks for what is left.");
             try {
-                stateEl.textContent = payloadRunning
+                stateEl.textContent = window.hkT(payloadRunning
                     ? "İşlem tamamlandı"
                     : kpatched ? "ROOT + KERNEL PATCHED -- NO REBOOT"
                     : jailbroken ? "ROOT -- NO REBOOT NEEDED"
-                    : "REPAIRED -- NO REBOOT NEEDED";
+                    : "REPAIRED -- NO REBOOT NEEDED");
                 stateEl.className = "ok";
             } catch (e) { }
         }

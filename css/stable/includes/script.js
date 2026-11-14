@@ -63,7 +63,7 @@
             timerId = null;
         }
         if (!jailbreakRunning) {
-            label.textContent = 'Otomatik başlat';
+            label.textContent = window.hkT('Otomatik başlat');
         }
     }
 
@@ -72,14 +72,14 @@
         jailbreakRunning = true;
         stopCountdown();
         jailbreakButton.disabled = true;
-        label.textContent = 'İşlem yapılıyor';
+        label.textContent = window.hkT('İşlem yapılıyor');
 
         Promise.resolve()
             .then(function () {
                 return doJb();
             })
             .then(function () {
-                label.textContent = 'Tamamlandı';
+                label.textContent = window.hkT('Tamamlandı');
             })
             .catch(function (error) {
                 var message = error && error.message ?
@@ -87,7 +87,7 @@
                 appendOutput('[-] ' + message);
                 appendOutput('[-] Yeniden denemeden önce tarayıcıyı tamamen kapatın. Sorun tekrarlanırsa konsolu yeniden başlatın.');
                 label.textContent =
-                    'İşlem başarısız — tarayıcıyı tamamen kapatıp yeniden açın';
+                    window.hkT('İşlem başarısız — tarayıcıyı tamamen kapatıp yeniden açın');
             });
     }
 
@@ -95,12 +95,12 @@
         stopCountdown();
         var countdown = 5;
         label.textContent =
-            'Otomatik başlatmaya kalan süre: ' + countdown;
+            window.hkT('Otomatik başlatmaya kalan süre: ' + countdown);
 
         timerId = setInterval(function () {
             countdown -= 1;
             label.textContent =
-                'Otomatik başlatmaya kalan süre: ' + countdown;
+                window.hkT('Otomatik başlatmaya kalan süre: ' + countdown);
 
             if (countdown <= 0) {
                 clearInterval(timerId);
@@ -184,7 +184,7 @@
             autoStarted = false;
             stopCountdown();
             label.textContent =
-                'Çevrimdışı önbellek kuruluyor...';
+                window.hkT('Çevrimdışı önbellek kuruluyor...');
         }
 
         function onProgress(event) {
@@ -192,9 +192,9 @@
             clearWatchdog();
             if (event && event.total > 0) {
                 label.textContent =
-                    'Çevrimdışı önbellek kuruluyor: ' +
+                    window.hkT('Çevrimdışı önbellek kuruluyor: ' +
                     Math.round(event.loaded / event.total * 100) +
-                    '%';
+                    '%');
             }
         }
 
@@ -233,7 +233,7 @@
             finish();
             stopCountdown();
             label.textContent =
-                'Önbellek hatası — yeniden deneyin';
+                window.hkT('Önbellek hatası — yeniden deneyin');
         }
 
         function onObsolete() {
@@ -241,7 +241,7 @@
             finish();
             stopCountdown();
             label.textContent =
-                'Önbellek güncel değil — tarayıcı verilerini temizleyip sayfayı yenileyin';
+                window.hkT('Önbellek güncel değil — tarayıcı verilerini temizleyip sayfayı yenileyin');
         }
 
         function reloadForCleanStart(message, swapCache) {
@@ -254,7 +254,7 @@
                 } catch (error) {}
             }
 
-            label.textContent = message;
+            label.textContent = window.hkT(message);
             setTimeout(function () {
                 window.location.reload();
             }, 750);
@@ -302,7 +302,7 @@
                    cache.status === cache.DOWNLOADING ||
                    cache.status === cache.UNCACHED) {
             label.textContent =
-                'Çevrimdışı önbellek bekleniyor...';
+                window.hkT('Çevrimdışı önbellek bekleniyor...');
             armWatchdog();
         } else {
             finish();
@@ -312,7 +312,7 @@
 
     if (uaElement) {
         uaElement.textContent =
-            'Tarayıcı: ' + navigator.userAgent;
+            window.hkT('Tarayıcı: ' + navigator.userAgent);
     }
 
     if (!detectSupportedPS4()) {
@@ -320,7 +320,7 @@
         checkbox.disabled = true;
         jailbreakButton.disabled = true;
         label.textContent =
-            (/PlayStation\s+4[\/ ]/i.test(navigator.userAgent) ? "Bu sistem sürümü desteklenmiyor — işlem durduruldu" : "Bu sayfayı PS4 tarayıcısında açın");
+            (window.hkT(/PlayStation\s+4[\/ ]/i.test(navigator.userAgent) ? "Bu sistem sürümü desteklenmiyor — işlem durduruldu" : "Bu sayfayı PS4 tarayıcısında açın"));
         appendOutput(
             '[-] Bu sayfa yalnızca PS4 6.00–11.02 sistem sürümlerini destekler.'
         );

@@ -47,7 +47,7 @@ function cacheBusy() {
 
 function cacheNote() {
   if (!cacheEl) return;
-  if (!appCache) { cacheEl.textContent = ""; return; }
+  if (!appCache) { cacheEl.textContent = window.hkT(""); return; }
   var text = "";
   try {
     if (appCache.status === appCache.CHECKING) text = "Güncellemeler kontrol ediliyor";
@@ -55,7 +55,7 @@ function cacheNote() {
     else if (appCache.status === appCache.UPDATEREADY) text = "Yeni sürüm hazır — kullanmak için sayfayı yeniden açın";
     else if (appCache.status === appCache.OBSOLETE) text = "Önbellek kaldırıldı — dosyalar sunucudan yükleniyor";
   } catch (e) {}
-  cacheEl.textContent = text;
+  cacheEl.textContent = window.hkT(text);
 }
 
 function cacheChanged() {
@@ -115,7 +115,7 @@ function start() {
   /* Not a refusal -- a wait. The run begins by itself once the files are in. */
   if (cacheBusy()) {
     waitingForCache = true;
-    countEl.textContent = "waiting for the cache";
+    countEl.textContent = window.hkT("waiting for the cache");
     cacheNote();
     return;
   }
@@ -127,19 +127,19 @@ function stopClock() {
     clearInterval(ticker);
     ticker = null;
   }
-  countEl.textContent = "";
+  countEl.textContent = window.hkT("");
 }
 
 function startClock() {
   var left = AUTOSTART_SECONDS;
-  countEl.textContent = "starting in " + left + "s";
+  countEl.textContent = window.hkT("starting in " + left + "s");
   ticker = setInterval(function () {
     left -= 1;
     if (left <= 0) {
       start();
       return;
     }
-    countEl.textContent = "starting in " + left + "s";
+    countEl.textContent = window.hkT("starting in " + left + "s");
   }, 1000);
 }
 

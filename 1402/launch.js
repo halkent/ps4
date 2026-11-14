@@ -2,11 +2,11 @@
 var match=/PlayStation\s+4[\/ ;]+(\d+\.\d{2})(?!\d)/i.exec(navigator.userAgent||'');
 if(!match || match[1] !== '14.02'){
 document.getElementById('pick').style.display='none';
-document.getElementById('heading').textContent=match?'Bu sayfa PS4 14.02 içindir.':'PS4 tarayıcısında açın';
-document.getElementById('device-note').textContent=match?'Algılanan sürüm: '+match[1]+'. Sürüm seçimine dönerek uygun sayfayı aç.':'Bu adresi PS4 14.02 konsolunun internet tarayıcısında aç. Bilgisayar veya telefonda işlem başlatılmaz.';
+document.getElementById('heading').textContent=window.hkT(match?'Bu sayfa PS4 14.02 içindir.':'PS4 tarayıcısında açın');
+document.getElementById('device-note').textContent=window.hkT(match?'Algılanan sürüm: '+match[1]+'. Sürüm seçimine dönerek uygun sayfayı aç.':'Bu adresi PS4 14.02 konsolunun internet tarayıcısında aç. Bilgisayar veya telefonda işlem başlatılmaz.');
 return;
 }
-document.getElementById('device-note').textContent='PS4 14.02 algılandı. Dosyalar hazır olduğunda işlem başlayacak.';
+document.getElementById('device-note').textContent=window.hkT('PS4 14.02 algılandı. Dosyalar hazır olduğunda işlem başlayacak.');
 /* The landing page: pick a payload, then start the run.
  *
  * Leaving this page has to be a real navigation from it -- the referrer guard
@@ -88,7 +88,7 @@ function swapAndReload() {
 
 function cacheNote() {
   if (!cacheEl) return;
-  if (!appCache) { cacheEl.textContent = ""; return; }
+  if (!appCache) { cacheEl.textContent = window.hkT(""); return; }
   var text = appCache.status === appCache.IDLE ? "Çevrimdışı dosyalar hazır." : "";
   try {
     if (appCache.status === appCache.CHECKING) text = "Güncellemeler kontrol ediliyor";
@@ -96,7 +96,7 @@ function cacheNote() {
     else if (appCache.status === appCache.UPDATEREADY) text = "Yeni sürüm hazır — sayfa yenileniyor";
     else if (appCache.status === appCache.OBSOLETE) text = "Önbellek kullanılamıyor — internet bağlantısı gerekiyor";
   } catch (e) {}
-  cacheEl.textContent = text;
+  cacheEl.textContent = window.hkT(text);
 }
 
 function cacheChanged() {
@@ -173,12 +173,12 @@ function start() {
   /* Not a refusal -- a bounded wait, and offline none at all. */
   if (!offline() && cacheBusy()) {
     waitingForCache = true;
-    countEl.textContent = "Dosyaların hazırlanması bekleniyor";
+    countEl.textContent = window.hkT("Dosyaların hazırlanması bekleniyor");
     cacheNote();
     if (cacheTimer === null) {
       cacheTimer = setTimeout(function () {
         cacheTimer = null;
-        if (!gone) { countEl.textContent = "Önbellek yanıt vermedi — çevrimiçi işlem başlıyor"; go(); }
+        if (!gone) { countEl.textContent = window.hkT("Önbellek yanıt vermedi — çevrimiçi işlem başlıyor"); go(); }
       }, CACHE_WAIT_MS);
     }
     return;
@@ -202,19 +202,19 @@ function stopClock() {
     clearInterval(ticker);
     ticker = null;
   }
-  countEl.textContent = "";
+  countEl.textContent = window.hkT("");
 }
 
 function startClock() {
   var left = AUTOSTART_SECONDS;
-  countEl.textContent = left + " saniye sonra işlem başlayacak";
+  countEl.textContent = window.hkT(left + " saniye sonra işlem başlayacak");
   ticker = setInterval(function () {
     left -= 1;
     if (left <= 0) {
       start();
       return;
     }
-    countEl.textContent = left + " saniye sonra işlem başlayacak";
+    countEl.textContent = window.hkT(left + " saniye sonra işlem başlayacak");
   }, 1000);
 }
 

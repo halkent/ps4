@@ -3,7 +3,7 @@
 
 <head>
     
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"><script>window.hkT=function(value){return value;};</script><link rel="stylesheet" href="../i18n/menu.css"><script src="../i18n/menu.js" data-root="../i18n/"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HALKENT // PS4 7.00-8.52 HOST / CACHE</title>
     <script>history.replaceState(null, null, 'index.html');</script>
@@ -147,24 +147,24 @@ body{background-color:#080f20!important;background-image:radial-gradient(ellipse
             function setProgress(value) {
                 var progress = Math.max(0, Math.min(100, value));
                 progressBar.style.width = progress + '%';
-                progressText.innerHTML = progress + '%';
+                progressText.innerHTML = window.hkT(progress + '%');
             }
             function openHost(message) {
                 if (redirectPending) return;
                 redirectPending = true;
                 setCached(true);
                 setProgress(100);
-                progressLabel.innerHTML = message;
+                progressLabel.innerHTML = window.hkT(message);
                 setTimeout(function () { window.location.replace('index.html'); }, 1200);
             }
             if (!appCache) {
-                progressLabel.innerHTML = 'Offline cache is not supported by this browser.';
+                progressLabel.innerHTML = window.hkT('Offline cache is not supported by this browser.');
                 return;
             }
             if (appCache.status === appCache.DOWNLOADING) setCached(false);
             appCache.ondownloading = function () {
                 setCached(false);
-                progressLabel.innerHTML = 'Page Caching Started!!';
+                progressLabel.innerHTML = window.hkT('Page Caching Started!!');
             };
             appCache.onprogress = function (event) {
                 if (event.lengthComputable && event.total > 0)
@@ -178,7 +178,7 @@ body{background-color:#080f20!important;background-image:radial-gradient(ellipse
             appCache.onnoupdate = function () { openHost('Offline Cache Ready'); };
             appCache.onerror = function () {
                 setCached(false);
-                progressLabel.innerHTML = 'Çevrimdışı önbellek kurulamadı. Clear browser data and reload while online.';
+                progressLabel.innerHTML = window.hkT('Çevrimdışı önbellek kurulamadı. Clear browser data and reload while online.');
             };
             appCache.onobsolete = appCache.onerror;
         }());
