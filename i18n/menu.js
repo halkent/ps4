@@ -3,11 +3,13 @@
   var langs = [["tr", "Türkçe"], ["en", "English"], ["ar", "العربية"], ["bg", "Български"], ["cs", "Čeština"], ["da", "Dansk"], ["de", "Deutsch"], ["es", "Español"], ["fa", "فارسی"], ["fr", "Français"], ["hu", "Magyar"], ["it", "Italiano"], ["ja", "日本語"], ["ko", "한국어"], ["nl", "Nederlands"], ["pl", "Polski"], ["pt-BR", "Português do Brasil"], ["pt-PT", "Português"], ["sr", "Srpski"], ["ru", "Русский"], ["sk", "Slovak"], ["uk", "Українська"], ["vi", "Tiếng Việt"], ["zh-CN", "中文"], ["zh-TW", "中文(繁)"]];
   var scripts=document.getElementsByTagName('script'), self=scripts[scripts.length-1];
   var base=self.getAttribute('data-root') || './i18n/';
-  var chosen='tr', query=/(?:[?&])lang=([^&]+)/.exec(location.search), key='halkent.language';
+  var browserLanguage=(navigator.languages&&navigator.languages[0])||navigator.language||navigator.userLanguage||'';
+  var initialLanguage=/^tr(?:-|$)/i.test(browserLanguage)?'tr':'en';
+  var chosen=initialLanguage, query=/(?:[?&])lang=([^&]+)/.exec(location.search), key='halkent.language';
   function valid(c){for(var i=0;i<langs.length;i++)if(langs[i][0]===c)return true;return false;}
-  try {chosen=localStorage.getItem(key)||'tr';} catch(e){}
+  try {chosen=localStorage.getItem(key)||initialLanguage;} catch(e){}
   if(query){try{var q=decodeURIComponent(query[1]);if(valid(q))chosen=q;}catch(e){}}
-  if(!valid(chosen))chosen='tr';
+  if(!valid(chosen))chosen=initialLanguage;
   try{localStorage.setItem(key,chosen);}catch(e){}
   window.hkT=function(value){
     if(typeof value!=='string'||chosen==='tr')return value;
