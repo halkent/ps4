@@ -57,7 +57,14 @@
     document.addEventListener('click',function(event){
       var link=event.target;while(link&&link.tagName!=='A')link=link.parentNode;
       if(!link||!link.getAttribute('href')||link.getAttribute('href').charAt(0)==='#')return;
-      try{var u=new URL(link.href);if(u.origin===location.origin||(u.hostname==='halkent.github.io'&&u.pathname.indexOf('/ps4/')===0)||u.hostname==='app.halkent.com'){if(u.origin===location.origin)u.searchParams.delete('lang');else u.searchParams.set('lang',chosen);link.href=u.href;}}catch(e){}
+      var u=document.createElement('a');u.href=link.href;
+      var known=/^(app|ps3|gamepad|teknik)\.halkent\.com$/.test(u.hostname)||(u.hostname==='halkent.github.io'&&u.pathname.indexOf('/ps4/')===0);
+      if(!known)return;
+      var same=u.protocol===location.protocol&&u.host===location.host;
+      var target=u.href.replace(/([?&])lang=[^&#]*(&?)/,function(all,sep,tail){return tail?sep:'';});
+      // PS3 carries the preference in its URL too, in case storage is unavailable.
+      if(!same||u.hostname==='ps3.halkent.com'){var hash=target.indexOf('#'),fragment=hash<0?'':target.slice(hash);if(hash>=0)target=target.slice(0,hash);target+=(target.indexOf('?')<0?'?':'&')+'lang='+encodeURIComponent(chosen)+fragment;}
+      link.href=target;
     },true);
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
