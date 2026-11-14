@@ -13,7 +13,6 @@ document.getElementById('device-note').textContent='PS4 14.02 algılandı. Dosya
  * in jb.js arms the chain only when the run page was reached from here. */
 
 var TARGET = {
-  hen: "afterglow=run&payload=hen.bin",
   goldhen: "afterglow=run&mode=goldhen",
 };
 
