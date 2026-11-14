@@ -1,4 +1,5 @@
 CACHE MANIFEST
+# 14.02 online and offline tests confirmed 2026-11-14
 # PS4 14.02 added 2026-11-14
 # Offline text wordmark 2026-11-10 aligned-v3
 # Brand logo refresh 2026-11-07
@@ -9,8 +10,8 @@ CACHE MANIFEST
 CACHE:
 search-info.css?v=1
 firmware-detect.js
-./ #f2559173dabb5a4d1f6881a0fb67faeb09d9c289a93c329ad1d0a58797e4f9cc
-index.html #f2559173dabb5a4d1f6881a0fb67faeb09d9c289a93c329ad1d0a58797e4f9cc
+./ #da2baa44decacd6e95e8b2979ee50b098d03c698404b27c382c0390705f1837f
+index.html #da2baa44decacd6e95e8b2979ee50b098d03c698404b27c382c0390705f1837f
 halkent.svg #03b1251eb737e4fda061b7c4f8f1210149f9cd7f7a9d1f0b80ba85f4101e04e6
 700/version-selector.html #4d32ad0ef7bd46da7b660da030c7e337e6cff90a5a42f6cdd41079ff3be8b665
 900/version-selector.html #e3e8a6a5946d17904081d3367083321b975229a9f9e697013c14426a1fc28ef6
