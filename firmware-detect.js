@@ -25,6 +25,7 @@
     add('11.00 11.50 11.52 12.00 12.02 12.50 12.52 13.00', './1300/index.html');
     add('13.02 13.04 13.50 13.52', './1352/index.html');
     add('14.00', './1400/');
+    add('14.02', './1402/');
     var target = routes[version];
     if (!target) {
         status.textContent = 'PS4 ' + version + ' algılandı. Bu sürüm için uygun bir sayfa bulunmuyor.';
